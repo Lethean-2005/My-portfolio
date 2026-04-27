@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import logoGif from '../assets/logogif.gif';
 import { useLanguage } from '../i18n.jsx';
 
 export default function Navbar() {
@@ -27,7 +26,7 @@ export default function Navbar() {
     <header className="navbar">
       <div className="nav-inner">
         <a href="#home" className="logo" aria-label="Home">
-          <img src={logoGif} alt="Lethean" />
+          Thean
         </a>
 
         <nav className="nav-desktop">
