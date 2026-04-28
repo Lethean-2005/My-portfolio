@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useLanguage } from '../i18n.jsx';
 
 function BarLogo({ skill }) {
   const [failed, setFailed] = useState(false);
@@ -49,6 +50,7 @@ const SKILLS = [
 ];
 
 export default function Skills() {
+  const { t } = useLanguage();
   const [centerIdx, setCenterIdx] = useState(0);
 
   useEffect(() => {
@@ -75,24 +77,18 @@ export default function Skills() {
     <section id="skills" className="section section-skills">
       <div className="container">
         <div className="skills-header">
-          <h2 className="skills-headline">
-            Skills that ship<br />
-            clean, scalable<br />
-            web products
+          <h2 className="skills-headline" style={{ whiteSpace: 'pre-line' }}>
+            {t.skills.headline}
           </h2>
 
           <div className="skills-aside">
-            <p className="skills-desc">
-              I build full-stack experiences with thoughtful UI design,
-              responsive frontend code, and pixel-tight detail across every
-              screen.
-            </p>
+            <p className="skills-desc">{t.skills.desc}</p>
             <div className="skills-actions">
               <a href="#cv" className="skills-btn">
-                <span aria-hidden="true">⬇</span> Download CV
+                <span aria-hidden="true">⬇</span> {t.skills.downloadCv}
               </a>
               <a href="#contact" className="skills-btn">
-                <span aria-hidden="true">✉</span> Contact Me
+                <span aria-hidden="true">✉</span> {t.skills.contactMe}
               </a>
             </div>
           </div>
@@ -102,11 +98,11 @@ export default function Skills() {
           <div className="skills-stats">
             <div className="sk-stat">
               <p className="sk-stat-num">%92</p>
-              <p className="sk-stat-label">average skill level</p>
+              <p className="sk-stat-label">{t.skills.avgLevel}</p>
             </div>
             <div className="sk-stat">
               <p className="sk-stat-num">x15+</p>
-              <p className="sk-stat-label">projects shipped</p>
+              <p className="sk-stat-label">{t.skills.projectsShipped}</p>
             </div>
           </div>
 

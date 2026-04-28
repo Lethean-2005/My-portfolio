@@ -1,20 +1,8 @@
-export default function Footer() {
-  const year = new Date().getFullYear();
+import { useLanguage } from '../i18n.jsx';
 
-  const sections = [
-    {
-      title: 'Product',
-      links: ['Features', 'Pricing', 'Integrations', 'Updates']
-    },
-    {
-      title: 'Resources',
-      links: ['Documentation', 'Guides', 'Blog', 'Support']
-    },
-    {
-      title: 'Company',
-      links: ['About', 'Careers', 'Contact', 'Partners']
-    }
-  ];
+export default function Footer() {
+  const { t } = useLanguage();
+  const year = new Date().getFullYear();
 
   return (
     <footer id="contact" className="footer footer-nexiron">
@@ -27,16 +15,13 @@ export default function Footer() {
                   <path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" />
                 </svg>
               </span>
-              <span className="footer-brand-name">Nexiron</span>
+              <span className="footer-brand-name">{t.footer.brand}</span>
             </div>
-            <p className="footer-tagline">
-              Nexiron helps teams transform complex data into clear, engaging
-              stories — everything you need in one place
-            </p>
+            <p className="footer-tagline">{t.footer.tagline}</p>
           </div>
 
           <div className="footer-links">
-            {sections.map((s) => (
+            {t.footer.sections.map((s) => (
               <div key={s.title} className="footer-col">
                 <p className="footer-col-title">{s.title}</p>
                 <ul>
@@ -52,10 +37,10 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <p className="footer-copy">© {year} Nexiron. All rights reserved</p>
+          <p className="footer-copy">© {year} {t.footer.brand}. {t.footer.copy}</p>
           <div className="footer-legal">
-            <a href="#">Terms of Service</a>
-            <a href="#">Privacy Policy</a>
+            <a href="#">{t.footer.terms}</a>
+            <a href="#">{t.footer.privacy}</a>
           </div>
         </div>
       </div>

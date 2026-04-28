@@ -23,3 +23,6 @@ yarn-error.log*
 
 # Claude Code
 .claude/
+
+# Large binary assets (>100MB) — not pushable to GitHub
+src/assets/vecteezy_isometric-futuristic-server-animation-isometric-database-or_46568707.mov

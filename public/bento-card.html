@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bento Mobile Showcase Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --page-bg: #f1efeb;
+        --card-bg: #e6e2dc;
+        --tab-bg: #ddd8d0;
+        --ink: #1a1a1a;
+        --ink-soft: #6a6a6a;
+        --btn-bg: #232323;
+        --btn-fg: #ffffff;
+
+        --phone-frame: #0e0e0e;
+        --phone-screen: #f5f1ea;
+
+        --card-radius: 28px;
+        --tab-radius: 14px;
+        --notch-r: 56px;
+      }
+
+      * { box-sizing: border-box; }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        min-height: 100%;
+        background: var(--page-bg);
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: var(--ink);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .stage {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 56px 24px;
+      }
+
+      /* ========= CARD WRAP (lets the tab sit above) ========= */
+      .card-wrap {
+        position: relative;
+        width: min(440px, 92vw);
+      }
+
+      /* ========= FOLDER TAB ========= */
+      .tab {
+        position: absolute;
+        left: 32px;
+        top: -22px;
+        width: 130px;
+        height: 36px;
+        background: var(--tab-bg);
+        border-radius: var(--tab-radius) var(--tab-radius) 0 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.04);
+      }
+
+      .tab::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--ink);
+      }
+
+      /* ========= MAIN CARD ========= */
+      .card {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: var(--card-bg);
+        border-radius: var(--card-radius);
+        overflow: visible; /* let the action button create the notch */
+        padding: 36px 28px 28px;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.4),
+          0 24px 50px -20px rgba(0, 0, 0, 0.18);
+      }
+
+      .card-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 12px;
+        color: var(--ink-soft);
+        margin-bottom: 8px;
+      }
+
+      .card-title {
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0 0 24px;
+        color: var(--ink);
+      }
+
+      /* ========= PHONE STACK ========= */
+      .stack {
+        position: relative;
+        height: 64%;
+        display: grid;
+        place-items: center;
+      }
+
+      .phone {
+        position: absolute;
+        width: 132px;
+        height: 264px;
+        background: var(--phone-frame);
+        border-radius: 30px;
+        padding: 7px;
+        box-shadow:
+          0 0 0 1.5px #1d1d1d,
+          0 22px 38px -10px rgba(0, 0, 0, 0.35);
+      }
+
+      .phone::before {
+        content: '';
+        position: absolute;
+        top: 12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 38px;
+        height: 10px;
+        background: #000;
+        border-radius: 999px;
+      }
+
+      .phone-screen {
+        width: 100%;
+        height: 100%;
+        background: var(--phone-screen);
+        border-radius: 24px;
+        padding: 24px 8px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .scr-hero {
+        height: 70px;
+        border-radius: 10px;
+        background: linear-gradient(160deg, #c9a37a, #6e533a);
+      }
+
+      .scr-row {
+        height: 8px;
+        background: #d6cfc1;
+        border-radius: 4px;
+      }
+      .scr-row.short { width: 60%; }
+
+      .scr-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+        flex: 1;
+      }
+
+      .scr-tile {
+        border-radius: 8px;
+        background: linear-gradient(160deg, #e9e1d2, #b8aa92);
+      }
+      .scr-tile:nth-child(2) { background: linear-gradient(160deg, #d8b89a, #976a47); }
+      .scr-tile:nth-child(3) { background: linear-gradient(160deg, #c5cdc0, #7e8b78); }
+      .scr-tile:nth-child(4) { background: linear-gradient(160deg, #d6c6a4, #927a4c); }
+
+      /* layered phones — back, mid, front */
+      .phone.back  { transform: translate(-92px, 6px) rotate(-10deg); z-index: 1; }
+      .phone.mid   { transform: translate(0, -6px) rotate(0deg);       z-index: 2; }
+      .phone.front { transform: translate(92px, 6px) rotate(10deg);    z-index: 3; }
+
+      /* ========= ACTION BUTTON / CUTOUT ========= */
+      /* The button extends past the corner; its box-shadow
+         halo (page-bg color) carves the visual notch. */
+      .go {
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+        width: 76px;
+        height: 76px;
+        border-radius: 50%;
+        background: var(--btn-bg);
+        color: var(--btn-fg);
+        border: none;
+        display: inline-grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow:
+          0 0 0 12px var(--page-bg),
+          0 10px 22px rgba(0, 0, 0, 0.25);
+        transition: transform 0.25s ease;
+        z-index: 4;
+      }
+
+      .go:hover { transform: scale(1.08); }
+      .go svg   { width: 28px; height: 28px; }
+
+      /* ========= RESPONSIVE ========= */
+      @media (max-width: 480px) {
+        .phone        { width: 110px; height: 218px; border-radius: 26px; }
+        .phone-screen { border-radius: 20px; padding: 22px 6px 8px; }
+        .phone.back   { transform: translate(-72px, 4px) rotate(-10deg); }
+        .phone.front  { transform: translate(72px, 4px) rotate(10deg); }
+        .go           { width: 64px; height: 64px; }
+        .go svg       { width: 24px; height: 24px; }
+        .tab          { left: 24px; width: 110px; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="stage">
+      <div class="card-wrap">
+        <div class="tab" aria-hidden="true">Mobile UI</div>
+
+        <article class="card" aria-label="Mobile UI showcase">
+          <div class="card-meta">
+            <span>2026 — case study</span>
+            <span>04</span>
+          </div>
+          <h2 class="card-title">Mobile App Showcase</h2>
+
+          <div class="stack">
+            <div class="phone back" aria-hidden="true">
+              <div class="phone-screen">
+                <div class="scr-hero"></div>
+                <div class="scr-row"></div>
+                <div class="scr-row short"></div>
+                <div class="scr-grid">
+                  <div class="scr-tile"></div>
+                  <div class="scr-tile"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="phone mid" aria-hidden="true">
+              <div class="phone-screen">
+                <div class="scr-hero"></div>
+                <div class="scr-row"></div>
+                <div class="scr-row short"></div>
+                <div class="scr-grid">
+                  <div class="scr-tile"></div>
+                  <div class="scr-tile"></div>
+                  <div class="scr-tile"></div>
+                  <div class="scr-tile"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="phone front" aria-hidden="true">
+              <div class="phone-screen">
+                <div class="scr-hero"></div>
+                <div class="scr-row"></div>
+                <div class="scr-row short"></div>
+                <div class="scr-grid">
+                  <div class="scr-tile"></div>
+                  <div class="scr-tile"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="go" type="button" aria-label="Open case study">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round"
+                 stroke-linejoin="round">
+              <path d="M7 17L17 7" />
+              <path d="M8 7h9v9" />
+            </svg>
+          </button>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

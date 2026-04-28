@@ -1295,3 +1295,887 @@ svg {
     font-size: 24px;
   }
 }
+
+/* ============ PROJECTS (folder fan) ============ */
+.section-projects {
+  padding: 80px 0;
+}
+
+.proj-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 280px;
+}
+
+/* button reset */
+.proj-stage .file {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+}
+
+.file {
+  position: relative;
+  width: 240px;
+  height: 160px;
+  cursor: pointer;
+  transform-origin: bottom;
+  perspective: 1500px;
+  z-index: 5;
+}
+
+/* Back of the folder + tab on top */
+.work-5 {
+  display: block;
+  background: #d97706;
+  width: 100%;
+  height: 100%;
+  transform-origin: top;
+  border-radius: 16px;
+  border-top-left-radius: 0;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.file:hover .work-5,
+.file.is-open .work-5 {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.work-5::after {
+  content: '';
+  position: absolute;
+  bottom: 99%;
+  left: 0;
+  width: 80px;
+  height: 16px;
+  background: #d97706;
+  border-radius: 16px 16px 0 0;
+}
+
+.work-5::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 75.5px;
+  width: 16px;
+  height: 16px;
+  background: #d97706;
+  clip-path: polygon(0 35%, 0% 100%, 50% 100%);
+}
+
+/* Original folder decorative papers — fan up with the front cover.
+   Kept exactly like the Tailwind reference (zinc 200/300/400, rotateX). */
+.work-4,
+.work-3,
+.work-2 {
+  display: block;
+  position: absolute;
+  inset: 4px;
+  border-radius: 16px;
+  transition: transform 0.3s ease;
+  transform-origin: bottom;
+}
+
+.work-4 { background: #a1a1aa; z-index: 1; }
+.work-3 { background: #d4d4d8; z-index: 2; }
+.work-2 { background: #e4e4e7; z-index: 3; }
+
+.file:hover .work-4,
+.file.is-open .work-4 { transform: rotateX(-20deg); }
+
+.file:hover .work-3,
+.file.is-open .work-3 { transform: rotateX(-30deg); }
+
+.file:hover .work-2,
+.file.is-open .work-2 { transform: rotateX(-38deg); }
+
+/* Project cards — white body with image-on-top + text-below.
+   Sit inside the folder (z above papers, below front cover) when closed;
+   fan out horizontally above everything when the folder opens. */
+.proj-card {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  width: 140px;
+  height: 195px;
+  margin-left: -70px;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  transition: transform 0.55s cubic-bezier(0.34, 1.2, 0.64, 1);
+  transform-origin: bottom center;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  overflow: hidden;
+}
+
+.proj-card-image {
+  display: block;
+  flex: 0 0 60%;
+  background: linear-gradient(160deg, #ffffff 0%, #c7d2fe 60%, #6366f1 100%);
+}
+
+.proj-card-far-left   { z-index: 4; }
+.proj-card-left       { z-index: 5; }
+.proj-card-center     { z-index: 8; }
+.proj-card-right      { z-index: 6; }
+.proj-card-far-right  { z-index: 4; }
+
+.proj-card-far-left .proj-card-image {
+  background: linear-gradient(160deg, #fff7ed 0%, #fdba74 55%, #c2410c 100%);
+}
+.proj-card-left .proj-card-image {
+  background: linear-gradient(160deg, #fff1f2 0%, #fda4af 55%, #be123c 100%);
+}
+.proj-card-center .proj-card-image {
+  background: linear-gradient(160deg, #eff6ff 0%, #93c5fd 50%, #1e3a8a 100%);
+}
+.proj-card-right .proj-card-image {
+  background: linear-gradient(160deg, #ecfdf5 0%, #6ee7b7 55%, #064e3b 100%);
+}
+.proj-card-far-right .proj-card-image {
+  background: linear-gradient(160deg, #ecfeff 0%, #67e8f9 55%, #155e75 100%);
+}
+
+.proj-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10px 12px 11px;
+}
+
+.proj-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: -0.1px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.proj-desc {
+  display: -webkit-box;
+  font-size: 8.5px;
+  color: #6a6a6a;
+  line-height: 1.35;
+  margin-top: 3px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.proj-link {
+  margin-top: auto;
+  font-size: 9px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* When the folder opens — fan all 5 cards out into a wide spread,
+   higher than before so they sit above the folder. */
+.file:hover .proj-card-far-left,
+.file.is-open .proj-card-far-left {
+  transform: translate(-280px, -150px) rotate(-28deg);
+  z-index: 9;
+}
+
+.file:hover .proj-card-left,
+.file.is-open .proj-card-left {
+  transform: translate(-150px, -210px) rotate(-14deg);
+  z-index: 10;
+}
+
+.file:hover .proj-card-center,
+.file.is-open .proj-card-center {
+  transform: translateY(-235px) scale(1.04);
+  z-index: 13;
+}
+
+.file:hover .proj-card-right,
+.file.is-open .proj-card-right {
+  transform: translate(150px, -210px) rotate(14deg);
+  z-index: 11;
+}
+
+.file:hover .proj-card-far-right,
+.file.is-open .proj-card-far-right {
+  transform: translate(280px, -150px) rotate(28deg);
+  z-index: 9;
+}
+
+.proj-title {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.proj-chips {
+  display: block;
+  font-size: 9px;
+  opacity: 0.85;
+  margin-top: 3px;
+}
+
+/* Front cover — z-index sits above all closed inner content (decoratives 1..3,
+   project cards 4..6) and below open project cards (9..11). */
+.work-1 {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(to top, #f59e0b, #fbbf24);
+  width: 100%;
+  height: 156px;
+  border-radius: 16px;
+  border-top-right-radius: 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transform-origin: bottom;
+  z-index: 7;
+}
+
+.work-1::after {
+  content: '';
+  position: absolute;
+  bottom: 99%;
+  right: 0;
+  width: 146px;
+  height: 16px;
+  background: #fbbf24;
+  border-radius: 16px 16px 0 0;
+}
+
+.work-1::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  right: 142px;
+  width: 12px;
+  height: 12px;
+  background: #fbbf24;
+  clip-path: polygon(100% 14%, 50% 100%, 100% 100%);
+}
+
+.file:hover .work-1,
+.file.is-open .work-1 {
+  transform: rotateX(-46deg) translateY(1px);
+  box-shadow: inset 0 20px 40px #fbbf24, inset 0 -20px 40px #d97706;
+}
+
+
+/* ============ SERVICES (UoUI card style) ============ */
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.svc-card {
+  position: relative;
+  perspective: 1200px;
+  height: 320px;
+  cursor: pointer;
+}
+
+/* The inner element is what rotates in 3D. */
+.svc-card .svc-flip {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.svc-card:hover .svc-flip,
+.svc-card:focus-within .svc-flip,
+.svc-card:focus .svc-flip {
+  transform: rotateY(180deg);
+}
+
+.svc-card .svc-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: #1b233d;
+  padding: 5px;
+  overflow: hidden;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 20px 0px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* === Back face — travel-card template === */
+.svc-card .svc-back {
+  transform: rotateY(180deg);
+  padding: 16px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* default = orange (card 1 theme). nth-child overrides below for 2/3/4. */
+  background:
+    radial-gradient(ellipse at 30% 60%, #ff8a3d 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, #ff5722 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 90%, #b32f0a 0%, transparent 70%),
+    linear-gradient(135deg, #ff5722 0%, #b32f0a 100%);
+}
+
+.svc-grid > .svc-card:nth-child(2) .svc-back {
+  background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+}
+
+.svc-grid > .svc-card:nth-child(3) .svc-back {
+  background:
+    radial-gradient(ellipse at 30% 60%, #c084fc 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, #8b5cf6 0%, transparent 60%),
+    linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+}
+
+.svc-grid > .svc-card:nth-child(4) .svc-back {
+  background:
+    radial-gradient(ellipse at 30% 60%, #6ee7b7 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, #34d399 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 90%, #047857 0%, transparent 70%),
+    linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+}
+
+/* Top row: badge + actions */
+.svc-card .svc-back .bk-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+}
+
+.svc-card .svc-back .bk-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px 4px 4px;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.svc-card .svc-back .bk-pill-icon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 6px;
+}
+
+.svc-card .svc-back .bk-pill-drop {
+  padding: 4px 9px;
+}
+
+.svc-card .svc-back .bk-caret {
+  font-size: 8px;
+  opacity: 0.7;
+}
+
+.svc-card .svc-back .bk-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.svc-card .svc-back .bk-arrow {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Big stat */
+.svc-card .svc-back .bk-stat {
+  display: flex;
+  align-items: flex-start;
+  gap: 2px;
+  color: #fff;
+  margin-top: 2px;
+}
+
+.svc-card .svc-back .bk-num {
+  font-family: 'Teko', 'Roboto', sans-serif;
+  font-size: 44px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1;
+}
+
+html[lang='km'] .svc-card .svc-back .bk-num {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: 36px;
+  letter-spacing: 0;
+}
+
+.svc-card .svc-back .bk-stat-arrow {
+  margin-top: 2px;
+  opacity: 0.85;
+}
+
+/* Headline + description */
+.svc-card .svc-back .bk-text {
+  color: #fff;
+}
+
+.svc-card .svc-back .bk-title {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0 0 3px;
+  letter-spacing: -0.1px;
+}
+
+html[lang='km'] .svc-card .svc-back .bk-title {
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.svc-card .svc-back .bk-desc {
+  font-size: 10px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Thumbnails */
+.svc-card .svc-back .bk-thumbs {
+  display: flex;
+  gap: 5px;
+  margin-top: auto;
+}
+
+.svc-card .svc-back .bk-thumb {
+  flex: 1;
+  height: 38px;
+  border-radius: 8px;
+}
+
+.svc-card .svc-back .bk-thumb-1 {
+  background: linear-gradient(135deg, rgba(255, 220, 180, 0.45), rgba(0, 0, 0, 0.35));
+}
+
+.svc-card .svc-back .bk-thumb-2 {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.65));
+}
+
+/* Pagination dots */
+.svc-card .svc-back .bk-dots {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.svc-card .svc-back .bk-dot {
+  width: 14px;
+  height: 2px;
+  border-radius: 1px;
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.svc-card .svc-back .bk-dot.is-active {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.svc-card .top-section {
+  height: 150px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(
+    45deg,
+    #a71c1c 0%,
+    #ba1b1b 25%,
+    #e75321 50%,
+    #ec6f07 75%,
+    #f98e35 100%
+  );
+  position: relative;
+}
+
+.svc-card .top-section .border {
+  border-bottom-right-radius: 10px;
+  height: 30px;
+  width: 130px;
+  background: #1b233d;
+  position: relative;
+  transform: skew(-40deg);
+  box-shadow: -10px -10px 0 0 #1b233d;
+}
+
+.svc-card .top-section .border::before {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  top: 0;
+  right: -15px;
+  background: rgba(255, 255, 255, 0);
+  border-top-left-radius: 10px;
+  box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+.svc-card .top-section::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: rgba(255, 255, 255, 0);
+  height: 15px;
+  width: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: -5px -5px 0 2px #1b233d;
+}
+
+/* === Card 2 — Cyan variant === */
+.svc-grid > .svc-card:nth-child(2) .top-section {
+  background: linear-gradient(45deg, rgb(4, 159, 187) 0%, rgb(80, 246, 255) 100%);
+}
+
+/* === Card 3 — Purple variant === */
+.svc-grid > .svc-card:nth-child(3) .svc-front {
+  background: #1a1530;
+}
+
+.svc-grid > .svc-card:nth-child(3) .top-section {
+  background:
+    radial-gradient(ellipse at 30% 60%, #c084fc 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, #8b5cf6 0%, transparent 60%),
+    linear-gradient(135deg, #7c3aed 0%, #4c1d95 100%);
+}
+
+.svc-grid > .svc-card:nth-child(3) .top-section .border {
+  background: #1a1530;
+  box-shadow: -10px -10px 0 0 #1a1530;
+}
+
+.svc-grid > .svc-card:nth-child(3) .top-section .border::before {
+  box-shadow: -5px -5px 0 2px #1a1530;
+}
+
+.svc-grid > .svc-card:nth-child(3) .top-section::before {
+  box-shadow: -5px -5px 0 2px #1a1530;
+}
+
+.svc-grid > .svc-card:nth-child(3) .top-section .icons .social-media .svg {
+  fill: #1a1530;
+}
+
+/* === Card 4 — Emerald variant === */
+.svc-grid > .svc-card:nth-child(4) .svc-front {
+  background: #062a23;
+}
+
+.svc-grid > .svc-card:nth-child(4) .top-section {
+  background:
+    radial-gradient(ellipse at 30% 60%, #6ee7b7 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, #34d399 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 90%, #047857 0%, transparent 70%),
+    linear-gradient(135deg, #10b981 0%, #064e3b 100%);
+}
+
+.svc-grid > .svc-card:nth-child(4) .top-section .border {
+  background: #062a23;
+  box-shadow: -10px -10px 0 0 #062a23;
+}
+
+.svc-grid > .svc-card:nth-child(4) .top-section .border::before {
+  box-shadow: -5px -5px 0 2px #062a23;
+}
+
+.svc-grid > .svc-card:nth-child(4) .top-section::before {
+  box-shadow: -5px -5px 0 2px #062a23;
+}
+
+.svc-grid > .svc-card:nth-child(4) .top-section .icons .social-media .svg {
+  fill: #062a23;
+}
+
+.svc-card .top-section .icons {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.svc-card .top-section .icons .logo {
+  height: 100%;
+  aspect-ratio: 1;
+  padding: 7px 0 7px 15px;
+}
+
+.svc-card .top-section .icons .logo .svg {
+  height: 100%;
+  width: 100%;
+}
+
+.svc-card .top-section .icons .social-media {
+  height: 100%;
+  padding: 8px 15px;
+  display: flex;
+  gap: 7px;
+}
+
+.svc-card .top-section .icons .social-media a {
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+}
+
+.svc-card .top-section .icons .social-media .svg {
+  height: 100%;
+  fill: #1b233d;
+  transition: fill 0.2s ease;
+  cursor: pointer;
+}
+
+.svc-card .top-section .icons .social-media a:hover .svg {
+  fill: white;
+}
+
+.svc-card .bottom-section {
+  margin-top: 15px;
+  padding: 10px 5px;
+}
+
+.svc-card .bottom-section .title {
+  display: block;
+  font-family: 'Teko', 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+html[lang='km'] .svc-card .bottom-section .title {
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.svc-card .svc-front .bottom-section .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.svc-card .svc-front .bottom-section .row .item {
+  flex: 30%;
+  text-align: center;
+  padding: 5px;
+  color: rgba(255, 200, 150, 0.7);
+}
+
+.svc-card .svc-front .bottom-section .row .item .big-text {
+  font-family: 'Teko', 'Roboto', sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  display: block;
+  color: #fff;
+  line-height: 1;
+}
+
+html[lang='km'] .svc-card .svc-front .bottom-section .row .item .big-text {
+  font-family: 'Kantumruy Pro', sans-serif;
+}
+
+.svc-card .svc-front .bottom-section .row .item .regular-text {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.55);
+  display: block;
+  margin-top: 2px;
+}
+
+.svc-card .svc-front .bottom-section .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* theme-tinted regular-text per card */
+.svc-grid > .svc-card:nth-child(2) .svc-front .bottom-section .row .item {
+  color: rgba(170, 222, 243, 0.7);
+}
+.svc-grid > .svc-card:nth-child(3) .svc-front .bottom-section .row .item {
+  color: rgba(196, 181, 253, 0.7);
+}
+.svc-grid > .svc-card:nth-child(4) .svc-front .bottom-section .row .item {
+  color: rgba(110, 231, 183, 0.7);
+}
+
+.svc-card .bottom-section .desc {
+  margin: 10px 6px 0;
+  color: rgba(170, 222, 243, 0.78);
+  font-size: 11.5px;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.svc-card .bottom-section .chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.svc-card .bottom-section .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.svc-card .bottom-section .chip .chip-logo {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.svc-card .bottom-section .chip-icon-only {
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  justify-content: center;
+}
+
+.svc-card .bottom-section .row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.svc-card .bottom-section .row .item {
+  flex: 30%;
+  text-align: center;
+  padding: 5px;
+  color: rgba(170, 222, 243, 0.721);
+}
+
+.svc-card .bottom-section .row .item .big-text {
+  font-size: 12px;
+  display: block;
+}
+
+.svc-card .bottom-section .row .item .regular-text {
+  font-size: 9px;
+}
+
+.svc-card .bottom-section .row .item:nth-child(2) {
+  border-left: 1px solid rgba(255, 255, 255, 0.126);
+  border-right: 1px solid rgba(255, 255, 255, 0.126);
+}
+
+@media (max-width: 1024px) {
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .svc-grid { grid-template-columns: 1fr; max-width: 320px; margin: 0 auto; }
+}
+
+/* ============ BLOCKCHAIN ============ */
+.section-blockchain {
+  padding: 80px 0;
+}
+
+.blockchain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.blockchain-title {
+  font-family: 'Teko', 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: clamp(34px, 4.6vw, 52px);
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  color: #ffffff;
+  margin: 0 0 18px;
+}
+
+html[lang='km'] .blockchain-title {
+  font-family: 'Kantumruy Pro', sans-serif;
+  font-size: clamp(24px, 3.6vw, 36px);
+}
+
+.blockchain-title .accent {
+  color: #e75321;
+}
+
+.blockchain-desc {
+  color: var(--text-dim);
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin: 0 0 22px;
+  max-width: 520px;
+}
+
+.blockchain-link {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding-bottom: 2px;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.blockchain-link:hover {
+  color: #e75321;
+  border-color: #e75321;
+}
+
+.blockchain-media {
+  position: relative;
+}
+
+.blockchain-media video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (max-width: 860px) {
+  .blockchain-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .blockchain-media {
+    order: -1;
+  }
+}

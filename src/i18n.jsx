@@ -11,37 +11,79 @@ const translations = {
       talk: "Let's Talk"
     },
     hero: {
-      eyebrow: 'I am Lethean',
       title1: 'Full-Stack',
-      title2: 'Developer & Designer',
-      desc: 'Blending thoughtful UI design with clean, responsive development to create websites that look great and perform flawlessly.',
-      cv: 'Download CV'
+      titleSuffix: 'the future of',
+      titleLine2: 'product development',
+      creators: '227+ Happy Creators',
+      desc: 'Develop software features with\nworkflows powered by AI agents and\nsupervised by humans',
+      bookDemo: 'Book a Demo',
+      contactUs: 'Contact us'
     },
     services: {
       title: 'Services',
       sub: 'Designing clean scalable responsive websites',
       items: [
         {
-          title: 'UI/UX Website Design',
-          desc: 'Clean, user-focused layouts with clear structure, smooth navigation, and strong visual hierarchy.',
-          chips: ['Modern layouts', 'Responsive design']
+          title: 'Web Development',
+          subtitle: 'Code & Build',
+          desc: 'Modern, responsive websites built with React, Next.js, and Tailwind. Fast, accessible, and built to scale.',
+          chips: ['React', 'Next.js', 'Tailwind', 'TypeScript'],
+          backTitle: 'WEB STACK',
+          backStats: [
+            { big: '04', label: 'Projects' },
+            { big: '12K', label: 'Lines' },
+            { big: '99%', label: 'Uptime' }
+          ]
         },
         {
-          title: 'Frontend Development',
-          desc: 'Responsive interfaces using HTML, CSS, and JavaScript for clean, consistent, reliable performance.',
-          chips: ['Clean HTML/CSS', 'Smooth interactions']
+          title: 'UI/UX Design',
+          subtitle: 'Design & Test',
+          desc: 'Pixel-perfect interfaces designed with users in mind. From wireframes to interactive prototypes in Figma.',
+          chips: ['Figma', 'Prototyping', 'Design Systems'],
+          backTitle: 'DESIGN KIT',
+          backStats: [
+            { big: '50+', label: 'Screens' },
+            { big: '100%', label: 'Mobile' },
+            { big: '4.8', label: 'Score' }
+          ]
         },
         {
-          title: 'Performance & Responsiveness',
-          desc: 'Fast, mobile-first websites optimized for speed, accessibility, and dependable performance.',
-          chips: ['Speed optimization', 'Asset efficiency']
+          title: 'Mobile Apps',
+          subtitle: 'iOS & Android',
+          desc: 'Cross-platform mobile experiences that feel native on iOS and Android, built with React Native and Flutter.',
+          chips: ['React Native', 'Flutter', 'iOS', 'Android'],
+          backTitle: 'MOBILE BUILD',
+          backStats: [
+            { big: '09', label: 'Apps' },
+            { big: '2.4K', label: 'Users' },
+            { big: '87%', label: 'Native' }
+          ]
         },
         {
-          title: 'WordPress Implementation',
-          desc: 'Lightweight WordPress setups with easy updates, fast loading, and scalable, clean, customizable layouts.',
-          chips: ['Theme setup', 'Easy management']
+          title: 'Brand Identity',
+          subtitle: 'Logo & Style',
+          desc: 'Logos, color systems, and brand guidelines that capture your story and stand out in any market.',
+          chips: ['Logo Design', 'Brand Guidelines', 'Identity'],
+          backTitle: 'BRAND SUITE',
+          backStats: [
+            { big: '20+', label: 'Logos' },
+            { big: '95%', label: 'Custom' },
+            { big: '6', label: 'Years' }
+          ]
         }
       ]
+    },
+    blockchain: {
+      titleStart: 'Why',
+      titleAccent: 'Blockchain',
+      titleEnd: 'Matters',
+      desc: 'Blockchain is revolutionizing how we handle data, transactions and trust. By eliminating intermediaries and creating secure, transparent systems, blockchain is laying the foundation for a more efficient and fair digital future.',
+      readMore: 'Read More'
+    },
+    servicesBack: {
+      tools: 'Tools',
+      viewMore: 'View More',
+      portfolio: 'Portfolio'
     },
     about: {
       title: 'About Me',
@@ -62,6 +104,12 @@ const translations = {
     skills: {
       title: 'Skills',
       sub: 'Crafting seamless UI/UX and clean code',
+      headline: 'Skills that ship\nclean, scalable\nweb products',
+      desc: 'I build full-stack experiences with thoughtful UI design, responsive frontend code, and pixel-tight detail across every screen.',
+      downloadCv: 'Download CV',
+      contactMe: 'Contact Me',
+      avgLevel: 'average skill level',
+      projectsShipped: 'projects shipped',
       groups: [
         {
           title: 'Core Skills',
@@ -89,6 +137,7 @@ const translations = {
     projects: {
       title: 'Projects',
       sub: 'Selected work across design and development',
+      explore: 'Explore',
       items: [
         {
           title: 'Agency Landing Page',
@@ -104,10 +153,41 @@ const translations = {
           title: 'WordPress Blog Theme',
           desc: 'Lightweight, customizable WordPress theme built for speed and clean typography.',
           chips: ['WordPress', 'Theme']
+        },
+        {
+          title: 'E-commerce Platform',
+          desc: 'Full-stack shop with Stripe checkout and a responsive product catalog.',
+          chips: ['Next.js', 'Stripe']
+        },
+        {
+          title: 'Analytics Dashboard',
+          desc: 'Interactive dashboard with charts, filters, and live data updates.',
+          chips: ['React', 'Charts']
         }
       ]
     },
-    footer: '© {year} Lethean — Full-Stack Developer & Designer'
+    footer: {
+      brand: 'Nexiron',
+      tagline:
+        'Nexiron helps teams transform complex data into clear, engaging stories — everything you need in one place',
+      sections: [
+        {
+          title: 'Product',
+          links: ['Features', 'Pricing', 'Integrations', 'Updates']
+        },
+        {
+          title: 'Resources',
+          links: ['Documentation', 'Guides', 'Blog', 'Support']
+        },
+        {
+          title: 'Company',
+          links: ['About', 'Careers', 'Contact', 'Partners']
+        }
+      ],
+      copy: 'All rights reserved',
+      terms: 'Terms of Service',
+      privacy: 'Privacy Policy'
+    }
   },
 
   km: {
@@ -120,37 +200,79 @@ const translations = {
       talk: 'តោះនិយាយ'
     },
     hero: {
-      eyebrow: 'ខ្ញុំឈ្មោះ Lethean',
       title1: 'Full-Stack',
-      title2: 'អ្នកអភិវឌ្ឍន៍ និងអ្នករចនា',
-      desc: 'រួមបញ្ចូលការរចនា UI ដ៏ល្អិតល្អន់ជាមួយនឹងការអភិវឌ្ឍន៍ស្អាត ឆ្លើយតប ដើម្បីបង្កើតគេហទំព័រដែលមើលទៅស្អាត និងដំណើរការដោយគ្មានកំហុស។',
-      cv: 'ទាញយក CV'
+      titleSuffix: 'អនាគតនៃ',
+      titleLine2: 'ការអភិវឌ្ឍផលិតផល',
+      creators: 'អ្នកបង្កើតពេញចិត្ត 227+',
+      desc: 'អភិវឌ្ឍលក្ខណៈពិសេសផ្នែកទន់\nជាមួយដំណើរការការងារដែលដំណើរការដោយ AI\nនិងត្រួតពិនិត្យដោយមនុស្ស',
+      bookDemo: 'កក់ការបង្ហាញ',
+      contactUs: 'ទាក់ទងពួកយើង'
     },
     services: {
       title: 'សេវាកម្ម',
       sub: 'រចនាគេហទំព័រស្អាត និងឆ្លើយតបបានល្អ',
       items: [
         {
-          title: 'ការរចនាគេហទំព័រ UI/UX',
-          desc: 'ប្លង់ស្អាត ផ្តោតលើអ្នកប្រើ ជាមួយរចនាសម្ព័ន្ធច្បាស់លាស់ ការរុករករលូន និងឋានានុក្រមដ៏រឹងមាំ។',
-          chips: ['ប្លង់ទំនើប', 'ការរចនាឆ្លើយតប']
+          title: 'អភិវឌ្ឍគេហទំព័រ',
+          subtitle: 'អភិវឌ្ឍ & បង្កើត',
+          desc: 'គេហទំព័រឆ្លើយតបទំនើបបង្កើតដោយ React, Next.js និង Tailwind។ លឿន ងាយប្រើ និងអាចពង្រីកបាន។',
+          chips: ['React', 'Next.js', 'Tailwind', 'TypeScript'],
+          backTitle: 'WEB STACK',
+          backStats: [
+            { big: '04', label: 'គម្រោង' },
+            { big: '12K', label: 'បន្ទាត់' },
+            { big: '99%', label: 'Uptime' }
+          ]
         },
         {
-          title: 'ការអភិវឌ្ឍ Frontend',
-          desc: 'ចំណុចប្រទាក់ឆ្លើយតបដោយប្រើ HTML, CSS និង JavaScript សម្រាប់ការអនុវត្តស្អាត និងអាចទុកចិត្តបាន។',
-          chips: ['HTML/CSS ស្អាត', 'អន្តរកម្មរលូន']
+          title: 'រចនា UI/UX',
+          subtitle: 'រចនា & សាកល្បង',
+          desc: 'ចំណុចប្រទាក់ដ៏ល្អិតល្អន់ ផ្តោតលើអ្នកប្រើ ចាប់ពី wireframe ទៅគំរូដែលអាចអន្តរកម្មបាននៅក្នុង Figma។',
+          chips: ['Figma', 'Prototyping', 'Design Systems'],
+          backTitle: 'DESIGN KIT',
+          backStats: [
+            { big: '50+', label: 'អេក្រង់' },
+            { big: '100%', label: 'ទូរស័ព្ទ' },
+            { big: '4.8', label: 'ពិន្ទុ' }
+          ]
         },
         {
-          title: 'ដំណើរការ និងការឆ្លើយតប',
-          desc: 'គេហទំព័រលឿន ផ្តោតលើទូរស័ព្ទ ត្រូវបានបង្កើនប្រសិទ្ធភាពសម្រាប់ល្បឿន ភាពងាយស្រួល និងដំណើរការដែលអាចទុកចិត្តបាន។',
-          chips: ['បង្កើនល្បឿន', 'ប្រសិទ្ធភាពទ្រព្យសកម្ម']
+          title: 'កម្មវិធីទូរស័ព្ទ',
+          subtitle: 'iOS & Android',
+          desc: 'បទពិសោធន៍ទូរស័ព្ទ Cross-platform ដែលដូចនឹងធម្មតានៅលើ iOS និង Android បង្កើតដោយ React Native និង Flutter។',
+          chips: ['React Native', 'Flutter', 'iOS', 'Android'],
+          backTitle: 'MOBILE BUILD',
+          backStats: [
+            { big: '09', label: 'កម្មវិធី' },
+            { big: '2.4K', label: 'អ្នកប្រើ' },
+            { big: '87%', label: 'Native' }
+          ]
         },
         {
-          title: 'ការអនុវត្ត WordPress',
-          desc: 'ការតំឡើង WordPress ស្រាល ជាមួយការធ្វើបច្ចុប្បន្នភាពងាយស្រួល ផ្ទុកលឿន និងប្លង់ដែលអាចប្ដូរតាមបំណងបាន។',
-          chips: ['ដំឡើងគំរូ', 'គ្រប់គ្រងងាយស្រួល']
+          title: 'អត្តសញ្ញាណម៉ាក',
+          subtitle: 'ឡូហ្គោ & ស្ទាយ',
+          desc: 'ឡូហ្គោ ប្រព័ន្ធពណ៌ និងគោលការណ៍ម៉ាក ដែលបង្ហាញរឿងរ៉ាវរបស់អ្នក និងលេចធ្លោក្នុងទីផ្សារ។',
+          chips: ['Logo Design', 'Brand Guidelines', 'Identity'],
+          backTitle: 'BRAND SUITE',
+          backStats: [
+            { big: '20+', label: 'ឡូហ្គោ' },
+            { big: '95%', label: 'ប្ដូរបាន' },
+            { big: '6', label: 'ឆ្នាំ' }
+          ]
         }
       ]
+    },
+    blockchain: {
+      titleStart: 'ហេតុអ្វី',
+      titleAccent: 'Blockchain',
+      titleEnd: 'សំខាន់',
+      desc: 'Blockchain កំពុងផ្លាស់ប្តូរវិធីដែលយើងគ្រប់គ្រងទិន្នន័យ ប្រតិបត្តិការ និងការទុកចិត្ត។ តាមរយៈការកាត់បន្ថយអន្តរការី និងបង្កើតប្រព័ន្ធដែលមានសុវត្ថិភាព និងតម្លាភាព blockchain កំពុងដាក់មូលដ្ឋានគ្រឹះសម្រាប់អនាគតឌីជីថលដ៏មានប្រសិទ្ធភាព និងយុត្តិធម៌។',
+      readMore: 'អានបន្ថែម'
+    },
+    servicesBack: {
+      tools: 'ឧបករណ៍',
+      viewMore: 'មើលបន្ថែម',
+      portfolio: 'Portfolio'
     },
     about: {
       title: 'អំពីខ្ញុំ',
@@ -171,6 +293,12 @@ const translations = {
     skills: {
       title: 'ជំនាញ',
       sub: 'បង្កើត UI/UX រលូន និងកូដស្អាត',
+      headline: 'ជំនាញដែលផ្តល់នូវ\nផលិតផលគេហទំព័រ\nស្អាត និងអាចពង្រីកបាន',
+      desc: 'ខ្ញុំបង្កើតបទពិសោធន៍ full-stack ជាមួយការរចនា UI ដ៏ល្អិតល្អន់ កូដ frontend ឆ្លើយតប និងព័ត៌មានលម្អិតយ៉ាងល្អិតល្អន់លើគ្រប់អេក្រង់។',
+      downloadCv: 'ទាញយក CV',
+      contactMe: 'ទាក់ទងខ្ញុំ',
+      avgLevel: 'កម្រិតជំនាញជាមធ្យម',
+      projectsShipped: 'គម្រោងបានបញ្ចប់',
       groups: [
         {
           title: 'ជំនាញស្នូល',
@@ -198,6 +326,7 @@ const translations = {
     projects: {
       title: 'គម្រោង',
       sub: 'ការងារជ្រើសរើសទាំងផ្នែករចនា និងអភិវឌ្ឍន៍',
+      explore: 'ស្វែងរក',
       items: [
         {
           title: 'ទំព័រទីផ្សារក្រុមហ៊ុន',
@@ -213,10 +342,41 @@ const translations = {
           title: 'គំរូប្លុក WordPress',
           desc: 'គំរូ WordPress ស្រាល អាចប្ដូរតាមបំណង បង្កើតឡើងសម្រាប់ល្បឿន និងការវាយអក្សរស្អាត។',
           chips: ['WordPress', 'គំរូ']
+        },
+        {
+          title: 'វេទិកាពាណិជ្ជកម្មអនឡាញ',
+          desc: 'ហាងទំនិញពេញលេញ ជាមួយ Stripe checkout និងកាតាឡុកផលិតផលឆ្លើយតប។',
+          chips: ['Next.js', 'Stripe']
+        },
+        {
+          title: 'ផ្ទាំងគ្រប់គ្រងវិភាគ',
+          desc: 'ផ្ទាំងគ្រប់គ្រងអន្តរកម្ម ជាមួយតារាងក្រាហ្វិក តម្រង និងទិន្នន័យបច្ចុប្បន្ន។',
+          chips: ['React', 'Charts']
         }
       ]
     },
-    footer: '© {year} Lethean — អ្នកអភិវឌ្ឍន៍ Full-Stack និងអ្នករចនា'
+    footer: {
+      brand: 'Nexiron',
+      tagline:
+        'Nexiron ជួយក្រុមការងារបំប្លែងទិន្នន័យស្មុគស្មាញទៅជារឿងរ៉ាវច្បាស់លាស់ និងគួរឱ្យចាប់អារម្មណ៍ — អ្វីៗដែលអ្នកត្រូវការនៅកន្លែងតែមួយ',
+      sections: [
+        {
+          title: 'ផលិតផល',
+          links: ['លក្ខណៈពិសេស', 'តម្លៃ', 'ការរួមបញ្ចូល', 'ការអាប់ដេត']
+        },
+        {
+          title: 'ធនធាន',
+          links: ['ឯកសារ', 'មគ្គុទ្ទេសក៍', 'ប្លុក', 'ការគាំទ្រ']
+        },
+        {
+          title: 'ក្រុមហ៊ុន',
+          links: ['អំពី', 'ការងារ', 'ទំនាក់ទំនង', 'ដៃគូ']
+        }
+      ],
+      copy: 'រក្សាសិទ្ធិទាំងអស់',
+      terms: 'លក្ខខណ្ឌសេវា',
+      privacy: 'គោលការណ៍ឯកជនភាព'
+    }
   }
 };
 
