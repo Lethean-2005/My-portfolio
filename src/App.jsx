@@ -5,6 +5,7 @@ import Blockchain from './components/Blockchain.jsx';
 import About from './components/About.jsx';
 import Skills from './components/Skills.jsx';
 import Projects from './components/Projects.jsx';
+import Experience from './components/Experience.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
         <About />
         <Skills />
         <Projects />
+        <Experience />
       </main>
       <Footer />
     </>

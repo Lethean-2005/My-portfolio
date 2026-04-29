@@ -1,4 +1,102 @@
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useLanguage } from '../i18n.jsx';
+
+function parseStat(str) {
+  const s = String(str ?? '');
+  const match = s.match(/^(\D*)(\d[\d.]*)(.*)$/);
+  if (!match) return null;
+  const [, prefix, num, suffix] = match;
+  const target = parseFloat(num);
+  if (Number.isNaN(target)) return null;
+  const [intPart, decPart = ''] = num.split('.');
+  const decimals = decPart.length;
+  const naturalLen = String(parseInt(intPart, 10) || 0).length;
+  const pad = intPart.length > naturalLen ? intPart.length : 0;
+  return { prefix, suffix, target, decimals, pad };
+}
+
+function formatStat(value, { prefix, suffix, decimals, pad }) {
+  const fixed = decimals > 0 ? value.toFixed(decimals) : String(Math.round(value));
+  const [int, dec] = fixed.split('.');
+  const padded = pad > 0 ? int.padStart(pad, '0') : int;
+  return `${prefix}${dec ? `${padded}.${dec}` : padded}${suffix}`;
+}
+
+function CountUp({ value, className, duration = 1400, start }) {
+  const ref = useRef(null);
+  const meta = useMemo(() => parseStat(value), [value]);
+  const [display, setDisplay] = useState(() => (meta ? formatStat(0, meta) : value));
+  const rafRef = useRef(0);
+  const metaRef = useRef(meta);
+  metaRef.current = meta;
+
+  const reducedMotion = () =>
+    typeof window !== 'undefined' &&
+    window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+
+  const run = useCallback(() => {
+    const m = metaRef.current;
+    if (!m) return;
+    cancelAnimationFrame(rafRef.current);
+    const t0 = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - t0) / duration);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setDisplay(formatStat(eased * m.target, m));
+      if (t < 1) rafRef.current = requestAnimationFrame(tick);
+    };
+    rafRef.current = requestAnimationFrame(tick);
+  }, [duration]);
+
+  useEffect(() => {
+    if (!meta) {
+      setDisplay(value);
+      return;
+    }
+    setDisplay(reducedMotion() ? formatStat(meta.target, meta) : formatStat(0, meta));
+  }, [meta, value]);
+
+  useEffect(() => {
+    if (start !== undefined || !meta || reducedMotion()) return;
+    const el = ref.current;
+    if (!el) return;
+    let fired = false;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting && !fired) {
+            fired = true;
+            run();
+            obs.unobserve(el);
+          }
+        }
+      },
+      { threshold: 0.35 }
+    );
+    obs.observe(el);
+    return () => {
+      obs.disconnect();
+      cancelAnimationFrame(rafRef.current);
+    };
+  }, [meta, start, run]);
+
+  useEffect(() => {
+    if (start === undefined || !meta || reducedMotion()) return;
+    if (start) {
+      run();
+    } else {
+      cancelAnimationFrame(rafRef.current);
+      setDisplay(formatStat(0, meta));
+    }
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [start, meta, run]);
+
+  return (
+    <span ref={ref} className={className}>
+      {display}
+    </span>
+  );
+}
 
 const ICON_MAP = {
   React: { slug: 'react', color: '61DAFB' },
@@ -68,8 +166,16 @@ function SocialIcons() {
 }
 
 function ServiceCard({ s, idx, total }) {
+  const [flipped, setFlipped] = useState(false);
   return (
-    <article className="svc-card" tabIndex={0}>
+    <article
+      className="svc-card"
+      tabIndex={0}
+      onMouseEnter={() => setFlipped(true)}
+      onMouseLeave={() => setFlipped(false)}
+      onFocus={() => setFlipped(true)}
+      onBlur={() => setFlipped(false)}
+    >
       <div className="svc-flip">
         <div className="svc-face svc-front">
           <div className="top-section">
@@ -86,7 +192,7 @@ function ServiceCard({ s, idx, total }) {
             <div className="row">
               {s.backStats.map((st, i) => (
                 <div key={i} className="item">
-                  <span className="big-text">{st.big}</span>
+                  <CountUp value={st.big} className="big-text" />
                   <span className="regular-text">{st.label}</span>
                 </div>
               ))}
@@ -106,17 +212,11 @@ function ServiceCard({ s, idx, total }) {
                 <span>{s.backTitle}</span>
                 <span className="bk-caret" aria-hidden="true">▾</span>
               </div>
-              <button className="bk-arrow" type="button" aria-label="Open">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M7 17L17 7" />
-                  <path d="M8 7h9v9" />
-                </svg>
-              </button>
             </div>
           </div>
 
           <div className="bk-stat">
-            <span className="bk-num">{s.backStats[0].big}</span>
+            <CountUp value={s.backStats[0].big} className="bk-num" start={flipped} />
             <svg className="bk-stat-arrow" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7" />
               <path d="M8 7h9v9" />

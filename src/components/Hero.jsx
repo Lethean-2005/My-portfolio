@@ -1,7 +1,61 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { animate, stagger } from 'animejs';
-import illustration from '../assets/illustration-01-deploy--dark.svg';
 import { useLanguage } from '../i18n.jsx';
+
+const CAROUSEL = [
+  { title: 'React', slug: 'react' },
+  { title: 'Vue.js', slug: 'vuedotjs' },
+  { title: 'Node.js', slug: 'nodedotjs' },
+  { title: 'TypeScript', slug: 'typescript' },
+  { title: 'Python', slug: 'python' },
+  { title: 'Docker', slug: 'docker' },
+  { title: 'Figma', slug: 'figma' },
+  { title: 'GitHub', slug: 'github' },
+  { title: 'Tailwind', slug: 'tailwindcss' },
+  { title: 'Next.js', slug: 'nextdotjs' },
+  { title: 'Vite', slug: 'vite' },
+  { title: 'PostgreSQL', slug: 'postgresql' }
+];
+
+const CARD_WIDTH = 160;
+const CARD_HEIGHT = 100;
+
+function Carousel3D() {
+  const count = CAROUSEL.length;
+  const radius = useMemo(
+    () => Math.round(CARD_WIDTH / 2 / Math.tan(Math.PI / count)),
+    [count]
+  );
+
+  return (
+    <div className="hero-3d-scene" aria-hidden="true">
+      <div className="hero-3d-ring">
+        {CAROUSEL.map((c, i) => (
+          <div
+            key={c.slug}
+            className="hero-3d-slot"
+            style={{
+              width: `${CARD_WIDTH}px`,
+              height: `${CARD_HEIGHT}px`,
+              marginLeft: `${-CARD_WIDTH / 2}px`,
+              marginTop: `${-CARD_HEIGHT / 2}px`,
+              transform: `rotateY(${i * (360 / count)}deg) translateZ(${radius}px)`
+            }}
+          >
+            <div className="hero-3d-card">
+              <img
+                className="hero-3d-card-logo"
+                src={`https://cdn.simpleicons.org/${c.slug}`}
+                alt=""
+              />
+              <span className="hero-3d-card-label">{c.title}</span>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -64,7 +118,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-nolana-right">
-          <img src={illustration} alt="Product illustration" loading="lazy" />
+          <Carousel3D />
         </div>
       </div>
     </section>

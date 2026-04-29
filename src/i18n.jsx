@@ -163,6 +163,21 @@ const translations = {
           title: 'Analytics Dashboard',
           desc: 'Interactive dashboard with charts, filters, and live data updates.',
           chips: ['React', 'Charts']
+        },
+        {
+          title: 'Mobile Banking App',
+          desc: 'Cross-platform finance app with biometric login and instant transfers.',
+          chips: ['React Native', 'Fintech']
+        },
+        {
+          title: 'SaaS Marketing Site',
+          desc: 'Conversion-focused landing pages with A/B-tested CTAs and dark mode.',
+          chips: ['Next.js', 'Tailwind']
+        },
+        {
+          title: 'Brand Identity System',
+          desc: 'Logo, type system, and brand guidelines packaged as a Figma library.',
+          chips: ['Figma', 'Branding']
         }
       ]
     },
@@ -352,6 +367,21 @@ const translations = {
           title: 'ផ្ទាំងគ្រប់គ្រងវិភាគ',
           desc: 'ផ្ទាំងគ្រប់គ្រងអន្តរកម្ម ជាមួយតារាងក្រាហ្វិក តម្រង និងទិន្នន័យបច្ចុប្បន្ន។',
           chips: ['React', 'Charts']
+        },
+        {
+          title: 'កម្មវិធីធនាគារទូរស័ព្ទ',
+          desc: 'កម្មវិធីហិរញ្ញវត្ថុឆ្លងប្រព័ន្ធ ជាមួយការចូលប្រើដោយជីវមាត្រ និងផ្ទេរប្រាក់ភ្លាមៗ។',
+          chips: ['React Native', 'Fintech']
+        },
+        {
+          title: 'គេហទំព័រ SaaS ទីផ្សារ',
+          desc: 'ទំព័រចុះចតផ្តោតលើការបំប្លែង ជាមួយ CTA សាកល្បង A/B និងរបៀបងងឹត។',
+          chips: ['Next.js', 'Tailwind']
+        },
+        {
+          title: 'ប្រព័ន្ធអត្តសញ្ញាណម៉ាក',
+          desc: 'ឡូហ្គោ ប្រព័ន្ធអក្សរ និងគោលការណ៍ម៉ាក វេចខ្ចប់ជាបណ្ណាល័យ Figma។',
+          chips: ['Figma', 'Branding']
         }
       ]
     },

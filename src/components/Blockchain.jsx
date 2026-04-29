@@ -14,9 +14,6 @@ export default function Blockchain() {
             {t.blockchain.titleEnd}
           </h2>
           <p className="blockchain-desc">{t.blockchain.desc}</p>
-          <a href="#contact" className="blockchain-link">
-            {t.blockchain.readMore}
-          </a>
         </div>
         <div className="blockchain-media">
           <video
