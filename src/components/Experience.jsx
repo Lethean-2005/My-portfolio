@@ -173,6 +173,7 @@ export default function Experience() {
   const sectionRef = useRef(null);
   const [t, setT] = useState(0);
   const [p, setP] = useState(1);
+  const [r, setR] = useState(0);
 
   useEffect(() => {
     let rafId = null;
@@ -187,22 +188,32 @@ export default function Experience() {
 
       let nextT;
       let nextP;
-      if (scrolled < 0 || scrolled > range) {
-        nextT = scrolled < 0 ? 0 : 1;
+      let nextR;
+      if (scrolled < 0) {
+        nextT = 0;
         nextP = 1;
+        nextR = 0;
+      } else if (scrolled > range) {
+        nextT = 1;
+        nextP = 1;
+        nextR = 1;
       } else {
         const raw = scrolled / range;
-        // Phase 1 (0 → 0.30): hero text fades + EXPERIENCE card moves to center
-        nextT = clamp(raw / 0.3);
+        // Phase 1 (0 → 0.20): hero text fades + EXPERIENCE card moves to center
+        nextT = clamp(raw / 0.2);
 
-        // Phase 2 (0.30 → 1.0): V-shape merge for the 5 cards
-        const m = clamp((raw - 0.3) / 0.7);
+        // Phase 2 (0.20 → 0.75): V-shape merge for the 5 cards
+        const m = clamp((raw - 0.2) / 0.55);
         if (m < 0.25) nextP = 1 - m / 0.25; // 1 → 0 expanding
         else if (m < 0.75) nextP = 0; // fully expanded
         else nextP = (m - 0.75) / 0.25; // 0 → 1 merging
+
+        // Phase 3 (0.75 → 1.0): card slides right, hero text returns from above
+        nextR = clamp((raw - 0.75) / 0.25);
       }
       setT(nextT);
       setP(nextP);
+      setR(nextR);
     };
 
     const onScroll = () => {
@@ -225,7 +236,7 @@ export default function Experience() {
       ref={sectionRef}
       id="experience"
       className="section-experience"
-      style={{ '--p': p, '--t': t }}
+      style={{ '--p': p, '--t': t, '--r': r }}
     >
       <div className="exp-sticky">
         <div className="exp-content">
@@ -247,6 +258,7 @@ export default function Experience() {
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="exp-hero-text">

@@ -6,6 +6,7 @@ import About from './components/About.jsx';
 import Skills from './components/Skills.jsx';
 import Projects from './components/Projects.jsx';
 import Experience from './components/Experience.jsx';
+import Pricing from './components/Pricing.jsx';
 import Footer from './components/Footer.jsx';
 
 export default function App() {
@@ -17,9 +18,10 @@ export default function App() {
         <Services />
         <Blockchain />
         <About />
+        <Experience />
         <Skills />
         <Projects />
-        <Experience />
+        <Pricing />
       </main>
       <Footer />
     </>

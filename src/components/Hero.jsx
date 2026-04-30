@@ -2,19 +2,25 @@ import { useEffect, useMemo, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { useLanguage } from '../i18n.jsx';
 
+import anim1 from '../assets/animation1.mov';
+import anim2 from '../assets/animation2.mp4';
+import anim3 from '../assets/animation3.mp4';
+import anim5 from '../assets/animation5.mp4';
+import anim6 from '../assets/animation16.mp4';
+
 const CAROUSEL = [
-  { title: 'React', slug: 'react' },
-  { title: 'Vue.js', slug: 'vuedotjs' },
-  { title: 'Node.js', slug: 'nodedotjs' },
-  { title: 'TypeScript', slug: 'typescript' },
-  { title: 'Python', slug: 'python' },
-  { title: 'Docker', slug: 'docker' },
-  { title: 'Figma', slug: 'figma' },
-  { title: 'GitHub', slug: 'github' },
-  { title: 'Tailwind', slug: 'tailwindcss' },
-  { title: 'Next.js', slug: 'nextdotjs' },
-  { title: 'Vite', slug: 'vite' },
-  { title: 'PostgreSQL', slug: 'postgresql' }
+  { title: 'JavaScript', src: anim1, type: 'video' },
+  { title: 'TypeScript', src: anim2, type: 'video' },
+  { title: 'Python',     src: anim3, type: 'video' },
+  { title: 'Go',         src: anim5, type: 'video' },
+  { title: 'Rust',       src: anim6, type: 'video' },
+  { title: 'Java',       src: anim1, type: 'video' },
+  { title: 'C#',         src: anim2, type: 'video' },
+  { title: 'PHP',        src: anim3, type: 'video' },
+  { title: 'Ruby',       src: anim5, type: 'video' },
+  { title: 'Swift',      src: anim6, type: 'video' },
+  { title: 'Kotlin',     src: anim1, type: 'video' },
+  { title: 'C++',        src: anim2, type: 'video' }
 ];
 
 const CARD_WIDTH = 160;
@@ -32,7 +38,7 @@ function Carousel3D() {
       <div className="hero-3d-ring">
         {CAROUSEL.map((c, i) => (
           <div
-            key={c.slug}
+            key={c.title}
             className="hero-3d-slot"
             style={{
               width: `${CARD_WIDTH}px`,
@@ -43,12 +49,18 @@ function Carousel3D() {
             }}
           >
             <div className="hero-3d-card">
-              <img
-                className="hero-3d-card-logo"
-                src={`https://cdn.simpleicons.org/${c.slug}`}
-                alt=""
-              />
-              <span className="hero-3d-card-label">{c.title}</span>
+              {c.type === 'video' ? (
+                <video
+                  className="hero-3d-card-media"
+                  src={c.src}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                />
+              ) : (
+                <img className="hero-3d-card-media" src={c.src} alt="" />
+              )}
             </div>
           </div>
         ))}
