@@ -224,7 +224,6 @@ export default function Projects() {
               <div className="growup-card-content" key={cardIdx}>
                 <div className="growup-card-top">
                   <div className="growup-brand">
-                    <div className="growup-brand-icon">{current.title.charAt(0).toUpperCase()}</div>
                     <span>{current.title}</span>
                   </div>
                 </div>
@@ -234,12 +233,9 @@ export default function Projects() {
                   <div className="growup-card-num">{current.chips.join(' • ').toUpperCase()}</div>
                 </div>
                 <div className="growup-card-bottom">
-                  <div className="growup-card-name">{current.desc.length > 32 ? current.desc.slice(0, 32).toUpperCase() + '...' : current.desc.toUpperCase()}</div>
+                  <div className="growup-card-name">{current.desc.toUpperCase()}</div>
                   <div className="growup-card-exp">{cardIdx + 1}/{total}</div>
                 </div>
-              </div>
-              <div className="growup-visa-pill">
-                <span className="growup-visa-text">VISA</span>
               </div>
             </div>
           </div>
@@ -284,13 +280,21 @@ export default function Projects() {
                         {String(proj._idx + 1).padStart(2, '0')}
                       </span>
                       <span className="proj-card-rule" aria-hidden="true" />
+                      {proj.date && <span className="proj-card-date">{proj.date}</span>}
                     </span>
                     <span className="proj-title">{proj.title}</span>
+                    {proj.role && <span className="proj-card-role">{proj.role}</span>}
                     <span className="proj-desc">{proj.desc}</span>
-                    <span className="proj-link">
-                      {explore}
-                      <ArrowRight />
-                    </span>
+                    {proj.chips && proj.chips.length > 0 && (
+                      <span className="proj-card-tags">
+                        {proj.chips.map((chip) => (
+                          <span key={chip} className="proj-card-tag">
+                            <ChipLogo name={chip} />
+                            {chip}
+                          </span>
+                        ))}
+                      </span>
+                    )}
                   </span>
                 </button>
               ))}

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { useLanguage } from '../i18n.jsx';
+import vichecal from '../assets/khmer vichecal.png';
 
 export default function Navbar() {
-  const { t, lang, setLang } = useLanguage();
+  const { t } = useLanguage();
 
   const links = [
     { key: 'home', href: '#home' },
@@ -14,19 +15,25 @@ export default function Navbar() {
 
   const [active, setActive] = useState('#about');
   const [open, setOpen] = useState(false);
+  const [cvState, setCvState] = useState('idle');
+
+  const handleDownload = () => {
+    if (cvState !== 'idle') return;
+    setCvState('loading');
+    setTimeout(() => setCvState('done'), 4000);
+    setTimeout(() => setCvState('idle'), 5500);
+  };
 
   const handleClick = (href) => {
     setActive(href);
     setOpen(false);
   };
 
-  const toggleLang = () => setLang(lang === 'en' ? 'km' : 'en');
-
   return (
     <header className="navbar">
       <div className="nav-inner">
         <a href="#home" className="logo" aria-label="Home">
-          Thean
+          <img src="/l1.png" alt="Lethean" className="logo-img" />
         </a>
 
         <nav className="nav-desktop">
@@ -46,16 +53,25 @@ export default function Navbar() {
         </nav>
 
         <div className="nav-right">
-          <button
-            className="lang-toggle"
-            onClick={toggleLang}
-            aria-label="Toggle language"
-            title={lang === 'en' ? 'Switch to Khmer' : 'Switch to English'}
+          <a
+            href="/cv.pdf"
+            download
+            className={`btn-talk btn-delivery${cvState === 'loading' ? ' is-loading' : ''}${cvState === 'done' ? ' is-done' : ''}`}
+            onClick={handleDownload}
           >
-            {lang === 'en' ? 'ខ្មែរ' : 'EN'}
-          </button>
-          <a href="#contact" className="btn-talk">
-            {t.nav.talk}
+            <span className="btn-delivery-label">Download CV</span>
+            <span className="btn-delivery-bike" aria-hidden="true">
+              <img src={vichecal} alt="" />
+              <span className="btn-delivery-dust" />
+              <span className="btn-delivery-dust" />
+              <span className="btn-delivery-dust" />
+            </span>
+            <span className="btn-delivery-done">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Delivered!
+            </span>
           </a>
           <button
             className="nav-toggle"

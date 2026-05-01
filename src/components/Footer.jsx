@@ -78,19 +78,43 @@ function HeartIcon() {
 const COLUMNS = [
   {
     title: 'Product',
-    links: ['Features', 'Integrations', 'Pricing', 'Changelog', 'Roadmap']
+    links: [
+      { label: 'Features', href: '#services' },
+      { label: 'Integrations', href: '#blockchain' },
+      { label: 'Pricing', href: '#pricing' },
+      { label: 'Changelog', href: '#projects' },
+      { label: 'Roadmap', href: '#experience' }
+    ]
   },
   {
     title: 'Company',
-    links: ['About Us', 'Careers', 'Blog', 'Press Kit', 'Contact']
+    links: [
+      { label: 'About Us', href: '#about' },
+      { label: 'Careers', href: '#contact' },
+      { label: 'Blog', href: '#projects' },
+      { label: 'Press Kit', href: '#contact' },
+      { label: 'Contact', href: '#contact' }
+    ]
   },
   {
     title: 'Resources',
-    links: ['Documentation', 'Help Center', 'API Reference', 'Community', 'Tutorials']
+    links: [
+      { label: 'Documentation', href: '#projects' },
+      { label: 'Help Center', href: '#contact' },
+      { label: 'API Reference', href: '#projects' },
+      { label: 'Community', href: '#contact' },
+      { label: 'Tutorials', href: '#projects' }
+    ]
   },
   {
     title: 'Legal',
-    links: ['Privacy', 'Terms', 'Security', 'Cookies', 'Compliance']
+    links: [
+      { label: 'Privacy', href: '#contact' },
+      { label: 'Terms', href: '#contact' },
+      { label: 'Security', href: '#contact' },
+      { label: 'Cookies', href: '#contact' },
+      { label: 'Compliance', href: '#contact' }
+    ]
   }
 ];
 
@@ -101,24 +125,36 @@ const SOCIALS = [
   { name: 'YouTube',  Icon: YouTubeIcon,  href: '#' }
 ];
 
-const META_LINKS = ['Status', 'Sitemap', 'Accessibility'];
+const META_LINKS = [
+  { label: 'Status', href: '#contact' },
+  { label: 'Sitemap', href: '#home' },
+  { label: 'Accessibility', href: '#contact' }
+];
 
 export default function Footer() {
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
+  const [subState, setSubState] = useState('idle');
   const year = new Date().getFullYear();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (subState !== 'idle') return;
+    setSubState('loading');
+    setTimeout(() => setSubState('done'), 4000);
+    setTimeout(() => {
+      setSubState('idle');
+      setEmail('');
+    }, 5500);
   };
 
   return (
-    <footer id="contact" className="footer footer-playflow">
+    <footer className="footer footer-playflow">
       <div className="container">
         <div className="footer-pf-grid">
           <div className="footer-pf-brand">
             <div className="footer-pf-logo">
-              <span className="footer-pf-brand-name">{t.footer.brand}</span>
+              <img src="/l1.png" alt={t.footer.brand} className="footer-pf-brand-img" />
             </div>
             <p className="footer-pf-tagline">
               Making work feel like play. The delightfully simple platform trusted by 2,000+ teams worldwide.
@@ -137,8 +173,8 @@ export default function Footer() {
               <p className="footer-pf-col-title">{c.title}</p>
               <ul>
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a href="#">{l}</a>
+                  <li key={l.label}>
+                    <a href={l.href}>{l.label}</a>
                   </li>
                 ))}
               </ul>
@@ -171,8 +207,23 @@ export default function Footer() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <button type="submit" className="footer-pf-btn">
-              Subscribe
+            <button
+              type="submit"
+              className={`btn-talk btn-delivery footer-pf-btn${subState === 'loading' ? ' is-loading' : ''}${subState === 'done' ? ' is-done' : ''}`}
+            >
+              <span className="btn-delivery-label">Subscribe</span>
+              <span className="btn-delivery-bike" aria-hidden="true">
+                <img src="/delivery1.png" alt="" />
+                <span className="btn-delivery-dust" />
+                <span className="btn-delivery-dust" />
+                <span className="btn-delivery-dust" />
+              </span>
+              <span className="btn-delivery-done">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                Subscribed!
+              </span>
             </button>
           </form>
         </div>
@@ -183,9 +234,9 @@ export default function Footer() {
           </p>
           <ul className="footer-pf-meta">
             {META_LINKS.map((l, i) => (
-              <li key={l}>
+              <li key={l.label}>
                 {i > 0 && <span className="footer-pf-meta-sep">•</span>}
-                <a href="#">{l}</a>
+                <a href={l.href}>{l.label}</a>
               </li>
             ))}
           </ul>

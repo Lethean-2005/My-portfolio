@@ -12,7 +12,7 @@ const translations = {
     },
     hero: {
       title1: 'Full-Stack',
-      titleSuffix: 'the future of',
+      titleSuffix: 'Developer of',
       titleLine2: 'product development',
       creators: '227+ Happy Creators',
       desc: 'Develop software features with\nworkflows powered by AI agents and\nsupervised by humans',
@@ -20,8 +20,8 @@ const translations = {
       contactUs: 'Contact us'
     },
     services: {
-      title: 'Services',
-      sub: 'Designing clean scalable responsive websites',
+      title: 'Services I Provide',
+      sub: 'I design and build clean, scalable, and responsive websites — pairing modern frontend stacks with reliable backend systems and automation tools to ship products that perform at every scale.',
       items: [
         {
           title: 'Web Development',
@@ -140,44 +140,46 @@ const translations = {
       explore: 'Explore',
       items: [
         {
-          title: 'Agency Landing Page',
-          desc: 'Responsive marketing site with smooth scroll interactions and modular sections.',
-          chips: ['React', 'Responsive']
+          title: 'POS System (VC1)',
+          role: 'Product Owner & Developer',
+          date: 'Feb – May 2025',
+          desc: 'Led E-commerce System development. Coordinated front-end and back-end implementation using MVC architecture.',
+          chips: ['PHP (MVC)', 'MySQL', 'Bootstrap', 'Jira']
         },
         {
-          title: 'Portfolio Template',
-          desc: 'Minimal dark-themed portfolio with reusable components and accessible layouts.',
-          chips: ['UI Design', 'HTML/CSS']
+          title: 'Victual Company',
+          role: 'Backend Developer',
+          date: 'Feb 2025',
+          desc: 'Developed robust backend API architecture and database schema for company operations.',
+          chips: ['PHP', 'Laravel', 'MySQL']
         },
         {
-          title: 'WordPress Blog Theme',
-          desc: 'Lightweight, customizable WordPress theme built for speed and clean typography.',
-          chips: ['WordPress', 'Theme']
+          title: 'Air Quality Dashboard',
+          role: 'Developer',
+          date: 'Jan 2025',
+          desc: 'Built real-time dashboard monitoring air quality indices with data visualization.',
+          chips: ['Vue.js', 'API Integration', 'Chart.js']
         },
         {
-          title: 'E-commerce Platform',
-          desc: 'Full-stack shop with Stripe checkout and a responsive product catalog.',
-          chips: ['Next.js', 'Stripe']
+          title: 'Task Management App',
+          role: 'Git Manager',
+          date: 'Jan 2025',
+          desc: 'Managed team roles and version control. Led front-end development with a focus on responsive and user-friendly design.',
+          chips: ['HTML', 'CSS', 'JavaScript', 'GitHub']
         },
         {
-          title: 'Analytics Dashboard',
-          desc: 'Interactive dashboard with charts, filters, and live data updates.',
-          chips: ['React', 'Charts']
+          title: 'Telegram Chatbot',
+          role: 'Team Leader',
+          date: 'Nov 2024',
+          desc: 'Built a bot to automate interactions using Telegram API. Designed custom commands and real-time response handling.',
+          chips: ['Python', 'Telegram API', 'Automation']
         },
         {
-          title: 'Mobile Banking App',
-          desc: 'Cross-platform finance app with biometric login and instant transfers.',
-          chips: ['React Native', 'Fintech']
-        },
-        {
-          title: 'SaaS Marketing Site',
-          desc: 'Conversion-focused landing pages with A/B-tested CTAs and dark mode.',
-          chips: ['Next.js', 'Tailwind']
-        },
-        {
-          title: 'Brand Identity System',
-          desc: 'Logo, type system, and brand guidelines packaged as a Figma library.',
-          chips: ['Figma', 'Branding']
+          title: 'Music Band Website',
+          role: 'Team Leader',
+          date: 'Sep – Nov 2024',
+          desc: 'Led static web design project. Managed tasks via GitHub and deployed final build to Netlify.',
+          chips: ['HTML', 'SASS', 'Netlify', 'Figma']
         }
       ]
     },
@@ -224,8 +226,8 @@ const translations = {
       contactUs: 'ទាក់ទងពួកយើង'
     },
     services: {
-      title: 'សេវាកម្ម',
-      sub: 'រចនាគេហទំព័រស្អាត និងឆ្លើយតបបានល្អ',
+      title: 'សេវាកម្មរបស់ខ្ញុំ',
+      sub: 'ខ្ញុំរចនា និងបង្កើតគេហទំព័រដែលស្អាត ងាយពង្រីក និងឆ្លើយតបបានល្អ — ផ្សំជាមួយ frontend ទំនើប ប្រព័ន្ធ backend ដែលមានស្ថេរភាព និងឧបករណ៍ស្វ័យប្រវត្តិកម្ម ដើម្បីផ្តល់ផលិតផលដែលដំណើរការល្អនៅគ្រប់ទំហំ។',
       items: [
         {
           title: 'អភិវឌ្ឍគេហទំព័រ',
@@ -344,44 +346,46 @@ const translations = {
       explore: 'ស្វែងរក',
       items: [
         {
-          title: 'ទំព័រទីផ្សារក្រុមហ៊ុន',
-          desc: 'គេហទំព័រទីផ្សារឆ្លើយតប ជាមួយអន្តរកម្មរមូររលូន និងផ្នែកម៉ូឌុល។',
-          chips: ['React', 'ឆ្លើយតប']
+          title: 'POS System (VC1)',
+          role: 'ម្ចាស់ផលិតផល & អ្នកអភិវឌ្ឍ',
+          date: 'កុម្ភៈ – ឧសភា 2025',
+          desc: 'ដឹកនាំការអភិវឌ្ឍប្រព័ន្ធពាណិជ្ជកម្មអនឡាញ និងសម្របសម្រួលការអភិវឌ្ឍផ្នែក front-end និង back-end ដោយប្រើប្រាស់ស្ថាបត្យកម្ម MVC។',
+          chips: ['PHP (MVC)', 'MySQL', 'Bootstrap', 'Jira']
         },
         {
-          title: 'គំរូ Portfolio',
-          desc: 'Portfolio ស្តាយងងឹតសាមញ្ញ ជាមួយធាតុផ្សំអាចប្រើឡើងវិញ និងប្លង់ងាយមើល។',
-          chips: ['រចនា UI', 'HTML/CSS']
+          title: 'Victual Company',
+          role: 'អ្នកអភិវឌ្ឍ Backend',
+          date: 'កុម្ភៈ 2025',
+          desc: 'អភិវឌ្ឍស្ថាបត្យកម្ម API និងស្គីមាមូលដ្ឋានទិន្នន័យដ៏រឹងមាំសម្រាប់ប្រតិបត្តិការក្រុមហ៊ុន។',
+          chips: ['PHP', 'Laravel', 'MySQL']
         },
         {
-          title: 'គំរូប្លុក WordPress',
-          desc: 'គំរូ WordPress ស្រាល អាចប្ដូរតាមបំណង បង្កើតឡើងសម្រាប់ល្បឿន និងការវាយអក្សរស្អាត។',
-          chips: ['WordPress', 'គំរូ']
+          title: 'Air Quality Dashboard',
+          role: 'អ្នកអភិវឌ្ឍ',
+          date: 'មករា 2025',
+          desc: 'បង្កើតផ្ទាំងគ្រប់គ្រងពេលវេលាជាក់ស្តែងតាមដានសន្ទស្សន៍គុណភាពខ្យល់ ជាមួយការមើលឃើញទិន្នន័យ។',
+          chips: ['Vue.js', 'API Integration', 'Chart.js']
         },
         {
-          title: 'វេទិកាពាណិជ្ជកម្មអនឡាញ',
-          desc: 'ហាងទំនិញពេញលេញ ជាមួយ Stripe checkout និងកាតាឡុកផលិតផលឆ្លើយតប។',
-          chips: ['Next.js', 'Stripe']
+          title: 'Task Management App',
+          role: 'អ្នកគ្រប់គ្រង Git',
+          date: 'មករា 2025',
+          desc: 'គ្រប់គ្រងតួនាទីក្រុម និងការគ្រប់គ្រងជំនាន់។ ដឹកនាំការអភិវឌ្ឍ front-end ដោយផ្ដោតលើការឆ្លើយតប និងការរចនាងាយស្រួលប្រើ។',
+          chips: ['HTML', 'CSS', 'JavaScript', 'GitHub']
         },
         {
-          title: 'ផ្ទាំងគ្រប់គ្រងវិភាគ',
-          desc: 'ផ្ទាំងគ្រប់គ្រងអន្តរកម្ម ជាមួយតារាងក្រាហ្វិក តម្រង និងទិន្នន័យបច្ចុប្បន្ន។',
-          chips: ['React', 'Charts']
+          title: 'Telegram Chatbot',
+          role: 'មេក្រុម',
+          date: 'វិច្ឆិកា 2024',
+          desc: 'បង្កើត bot សម្រាប់ស្វ័យប្រវត្តិកម្មអន្តរកម្មដោយប្រើប្រាស់ Telegram API។ រចនាពាក្យបញ្ជាផ្ទាល់ខ្លួន និងដំណើរការឆ្លើយតបពេលវេលាជាក់ស្តែង។',
+          chips: ['Python', 'Telegram API', 'Automation']
         },
         {
-          title: 'កម្មវិធីធនាគារទូរស័ព្ទ',
-          desc: 'កម្មវិធីហិរញ្ញវត្ថុឆ្លងប្រព័ន្ធ ជាមួយការចូលប្រើដោយជីវមាត្រ និងផ្ទេរប្រាក់ភ្លាមៗ។',
-          chips: ['React Native', 'Fintech']
-        },
-        {
-          title: 'គេហទំព័រ SaaS ទីផ្សារ',
-          desc: 'ទំព័រចុះចតផ្តោតលើការបំប្លែង ជាមួយ CTA សាកល្បង A/B និងរបៀបងងឹត។',
-          chips: ['Next.js', 'Tailwind']
-        },
-        {
-          title: 'ប្រព័ន្ធអត្តសញ្ញាណម៉ាក',
-          desc: 'ឡូហ្គោ ប្រព័ន្ធអក្សរ និងគោលការណ៍ម៉ាក វេចខ្ចប់ជាបណ្ណាល័យ Figma។',
-          chips: ['Figma', 'Branding']
+          title: 'Music Band Website',
+          role: 'មេក្រុម',
+          date: 'កញ្ញា – វិច្ឆិកា 2024',
+          desc: 'ដឹកនាំគម្រោងរចនាគេហទំព័រឋិតិវន្ត។ គ្រប់គ្រងការងារតាម GitHub និងដាក់ឱ្យដំណើរការនៅលើ Netlify។',
+          chips: ['HTML', 'SASS', 'Netlify', 'Figma']
         }
       ]
     },
