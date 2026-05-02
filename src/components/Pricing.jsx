@@ -85,9 +85,9 @@ const FEATURES = [
 ];
 
 const PLANS = [
-  { title: 'Starter Plan',      price: '$39', variant: 'small',  features: FEATURES.slice(0, 5) },
-  { title: 'Professional Plan', price: '$69', variant: 'medium', features: FEATURES.slice(0, 7) },
-  { title: 'Premium Plan',      price: '$99', variant: 'large',  features: FEATURES }
+  { title: 'Starter Plan',      price: '$600',  variant: 'small',  features: FEATURES.slice(0, 5) },
+  { title: 'Professional Plan', price: '$900',  variant: 'medium', features: FEATURES.slice(0, 7) },
+  { title: 'Premium Plan',      price: '$1200', variant: 'large',  features: FEATURES }
 ];
 
 function ArrowIcon() {

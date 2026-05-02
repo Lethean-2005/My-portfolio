@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '../i18n.jsx';
+import khmerFolderPattern from '../assets/khmer patthern.jpg';
 
 const POSITION_CLASSES = [
   'proj-card-far-left',
@@ -215,13 +216,46 @@ export default function Projects() {
           </div>
 
           <div className="growup-card-wrap">
-            <div className="growup-credit-card">
-              <div className="growup-card-body" />
-              <button type="button" className="growup-alloc-btn">
-                <span className="growup-plus">+</span>
-                Allocate funds
-              </button>
-              <div className="growup-card-content" key={cardIdx}>
+            <div className="growup-credit-card growup-folder">
+              <svg
+                className="growup-folder-shape"
+                viewBox="0 0 360 240"
+                preserveAspectRatio="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <defs>
+                  <pattern
+                    id="growupFolderPattern"
+                    patternUnits="userSpaceOnUse"
+                    width="360"
+                    height="240"
+                  >
+                    <image
+                      href={khmerFolderPattern}
+                      x="0"
+                      y="0"
+                      width="360"
+                      height="240"
+                      preserveAspectRatio="xMidYMid slice"
+                    />
+                  </pattern>
+                  <linearGradient id="growupFolderOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FF4A12" stopOpacity="0.88" />
+                    <stop offset="100%" stopColor="#DB2F00" stopOpacity="0.82" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M 18 0 L 130 0 Q 146 0 152 14 L 162 32 Q 168 44 184 44 L 342 44 Q 360 44 360 62 L 360 222 Q 360 240 342 240 L 18 240 Q 0 240 0 222 L 0 18 Q 0 0 18 0 Z"
+                  fill="url(#growupFolderPattern)"
+                />
+                <path
+                  d="M 18 0 L 130 0 Q 146 0 152 14 L 162 32 Q 168 44 184 44 L 342 44 Q 360 44 360 62 L 360 222 Q 360 240 342 240 L 18 240 Q 0 240 0 222 L 0 18 Q 0 0 18 0 Z"
+                  fill="url(#growupFolderOrange)"
+                />
+              </svg>
+
+              <div className="growup-folder-content" key={cardIdx}>
                 <div className="growup-card-top">
                   <div className="growup-brand">
                     <span>{current.title}</span>

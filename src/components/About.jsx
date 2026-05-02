@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import portrait from '../assets/profile.wmCzdpqk.png';
 import statsScreenshot from '../assets/screenshot-stats.png';
 import khmerPattern1 from '../assets/khmer pathern1.jpg';
+import khmerPattern7 from '../assets/khmer1.jpg';
 
 function CountUp({ target = 20, suffix = '+', duration = 1600 }) {
   const ref = useRef(null);
@@ -187,7 +188,7 @@ export default function About() {
                 <defs>
                   <pattern id="weatherWidePatternFill" patternUnits="userSpaceOnUse" width="342" height="175">
                     <image
-                      href={khmerPattern1}
+                      href={khmerPattern7}
                       x="0"
                       y="0"
                       width="342"
@@ -198,13 +199,14 @@ export default function About() {
                   <linearGradient
                     id="weatherWideGrad"
                     gradientUnits="userSpaceOnUse"
+                    gradientTransform="rotate(135 0.5 0.5)"
                     y2="128"
                     x2="354.142"
                     y1="128"
                     x1="0"
                   >
-                    <stop stopColor="#5936B4" stopOpacity="0.78" />
-                    <stop stopColor="#362A84" stopOpacity="0.85" offset="1" />
+                    <stop stopColor="#FF3A1A" stopOpacity="0.4" />
+                    <stop stopColor="#FF3A1A" stopOpacity="0.5" offset="1" />
                   </linearGradient>
                 </defs>
                 <path
@@ -224,62 +226,6 @@ export default function About() {
           </div>
         </section>
 
-        <div className="class-brands">
-          <div className="class-brands-track">
-            {[0, 1].map((dup) => (
-              <div key={dup} className="class-brands-row" aria-hidden={dup === 1 ? 'true' : undefined}>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/jira/ffffff" alt="" aria-hidden="true" />
-                  <span>Jira</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/git/ffffff" alt="" aria-hidden="true" />
-                  <span>Git</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/github/ffffff" alt="" aria-hidden="true" />
-                  <span>GitHub</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/gitlab/ffffff" alt="" aria-hidden="true" />
-                  <span>GitLab</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/docker/ffffff" alt="" aria-hidden="true" />
-                  <span>Docker</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/figma/ffffff" alt="" aria-hidden="true" />
-                  <span>Figma</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/postman/ffffff" alt="" aria-hidden="true" />
-                  <span>Postman</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/swagger/ffffff" alt="" aria-hidden="true" />
-                  <span>Swagger</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/postgresql/ffffff" alt="" aria-hidden="true" />
-                  <span>PostgreSQL</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/mysql/ffffff" alt="" aria-hidden="true" />
-                  <span>MySQL</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/sqlite/ffffff" alt="" aria-hidden="true" />
-                  <span>SQLite</span>
-                </div>
-                <div className="class-brand">
-                  <img src="https://cdn.simpleicons.org/stackoverflow/ffffff" alt="" aria-hidden="true" />
-                  <span>Stack Overflow</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
       </main>
     </section>
   );
