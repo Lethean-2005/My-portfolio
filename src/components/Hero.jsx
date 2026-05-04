@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { useLanguage } from '../i18n.jsx';
 
-import anim1 from '../assets/animation1.mov';
+import anim1 from '../assets/animation1.mp4';
 import anim2 from '../assets/animation2.mp4';
 import anim3 from '../assets/animation3.mp4';
 import anim5 from '../assets/animation5.mp4';
@@ -57,6 +57,7 @@ function Carousel3D() {
                   muted
                   loop
                   playsInline
+                  preload="auto"
                 />
               ) : (
                 <img className="hero-3d-card-media" src={c.src} alt="" />
