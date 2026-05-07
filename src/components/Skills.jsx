@@ -84,7 +84,7 @@ export default function Skills() {
           <div className="skills-aside">
             <p className="skills-desc">{t.skills.desc}</p>
             <div className="skills-actions">
-              <a href="#cv" className="skills-btn">
+              <a href="/cv.pdf" download className="skills-btn">
                 <span aria-hidden="true">⬇</span> {t.skills.downloadCv}
               </a>
               <a href="#contact" className="skills-btn">
