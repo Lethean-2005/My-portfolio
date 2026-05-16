@@ -43,7 +43,7 @@ const TECH_ICONS = {
   'Vue.js': 'vuedotjs',
   'Chart.js': 'chartdotjs',
   HTML: 'html5',
-  CSS: 'css3',
+  CSS: 'css',
   JavaScript: 'javascript',
   GitHub: 'github',
   Python: 'python',
@@ -60,13 +60,15 @@ const TECH_ICONS = {
 
 function ChipLogo({ name }) {
   const slug = TECH_ICONS[name];
-  if (!slug) return null;
+  const [failed, setFailed] = useState(false);
+  if (!slug || failed) return null;
   return (
     <img
       className="proj-card-chip-logo"
       src={`https://cdn.simpleicons.org/${slug}`}
       alt=""
       aria-hidden="true"
+      onError={() => setFailed(true)}
     />
   );
 }

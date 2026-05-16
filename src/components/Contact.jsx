@@ -1,5 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import vichecal from '../assets/khmer vichecal.png';
+
+const BUDGET_OPTIONS = [
+  { value: 'starter',      label: 'Starter — $600' },
+  { value: 'professional', label: 'Professional — $900' },
+  { value: 'premium',      label: 'Premium — $1200' }
+];
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -10,18 +16,51 @@ export default function Contact() {
     message: ''
   });
   const [submitState, setSubmitState] = useState('idle');
+  const [budgetOpen, setBudgetOpen] = useState(false);
+  const budgetRef = useRef(null);
+
+  useEffect(() => {
+    if (!budgetOpen) return;
+    const handleClick = (e) => {
+      if (budgetRef.current && !budgetRef.current.contains(e.target)) {
+        setBudgetOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [budgetOpen]);
 
   const update = (key) => (e) => setForm({ ...form, [key]: e.target.value });
+  const selectBudget = (value) => {
+    setForm((prev) => ({ ...prev, budget: value }));
+    setBudgetOpen(false);
+  };
+  const budgetLabel = BUDGET_OPTIONS.find((o) => o.value === form.budget)?.label ?? '';
 
-  const handleSubmit = (e) => {
+  const [submitError, setSubmitError] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (submitState !== 'idle') return;
+    setSubmitError('');
     setSubmitState('loading');
-    setTimeout(() => setSubmitState('done'), 4000);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(form)
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) throw new Error(data.error || 'Send failed.');
+      setSubmitState('done');
+      setTimeout(() => {
+        setSubmitState('idle');
+        setForm({ name: '', company: '', email: '', budget: '', message: '' });
+      }, 2500);
+    } catch (err) {
+      setSubmitError(err.message || 'Send failed.');
       setSubmitState('idle');
-      setForm({ name: '', company: '', email: '', budget: '', message: '' });
-    }, 5500);
+    }
   };
 
   return (
@@ -111,20 +150,47 @@ export default function Contact() {
             />
             <label htmlFor="contact-email">Email</label>
           </div>
-          <div className="contact-field">
-            <select
+          <div className="contact-field" ref={budgetRef}>
+            <button
+              type="button"
               id="contact-budget"
-              value={form.budget}
-              onChange={update('budget')}
+              className={`pg-dropdown-trigger${budgetOpen ? ' is-open' : ''}`}
+              onClick={() => setBudgetOpen((o) => !o)}
               data-empty={form.budget ? 'false' : 'true'}
+              aria-haspopup="listbox"
+              aria-expanded={budgetOpen}
             >
-              <option value="" disabled hidden></option>
-              <option value="5-10k">$5K — $10K</option>
-              <option value="10-25k">$10K — $25K</option>
-              <option value="25-50k">$25K — $50K</option>
-              <option value="50k+">$50K+</option>
-            </select>
+              <span className="pg-dropdown-value">{budgetLabel}</span>
+              <svg
+                className={`pg-chev${budgetOpen ? ' open' : ''}`}
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                width="11"
+                height="11"
+                aria-hidden="true"
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
             <label htmlFor="contact-budget">Budget</label>
+            {budgetOpen && (
+              <div className="pg-dropdown-panel" role="listbox">
+                {BUDGET_OPTIONS.map((opt) => (
+                  <button
+                    type="button"
+                    key={opt.value}
+                    className={`pg-dropdown-opt${opt.value === form.budget ? ' active' : ''}`}
+                    onClick={() => selectBudget(opt.value)}
+                    role="option"
+                    aria-selected={opt.value === form.budget}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
           <div className="contact-field contact-field-full">
             <textarea
@@ -143,10 +209,12 @@ export default function Contact() {
             <button
               type="submit"
               className="contact-submit-btn"
+              disabled={submitState === 'loading'}
               style={submitState === 'done' ? { color: 'var(--contact-accent)' } : undefined}
             >
-              {submitState === 'done' ? 'Sent' : 'Submit'}
+              {submitState === 'loading' ? 'Sending…' : submitState === 'done' ? 'Sent' : 'Submit'}
             </button>
+            {submitError && <span className="contact-submit-error">{submitError}</span>}
             <span className="contact-vichecal" aria-hidden="true">
               <img src={vichecal} alt="" />
             </span>

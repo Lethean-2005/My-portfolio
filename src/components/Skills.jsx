@@ -4,7 +4,7 @@ import { useLanguage } from '../i18n.jsx';
 function BarLogo({ skill }) {
   const [failed, setFailed] = useState(false);
 
-  if (failed) {
+  if (!skill.slug || failed) {
     return (
       <span
         className="bar-tag-fallback"
@@ -38,15 +38,15 @@ const SKILLS = [
   { name: 'MySQL', value: 82, color: '#00758F', slug: 'mysql', tag: 'Database' },
   { name: 'Figma', value: 88, color: '#A259FF', slug: 'figma', tag: 'Design' },
   { name: 'WordPress', value: 80, color: '#21759B', slug: 'wordpress', tag: 'CMS' },
-  { name: 'Power BI', value: 72, color: '#F2C811', slug: 'powerbi', tag: 'Analytics' },
+  { name: 'Power BI', value: 72, color: '#F2C811', slug: null, tag: 'Analytics' },
   { name: 'Git / GitHub', value: 90, color: '#F05032', slug: 'git', tag: 'VCS' },
   { name: 'Jira', value: 75, color: '#0052CC', slug: 'jira', tag: 'PM' },
-  { name: 'AWS', value: 70, color: '#FF9900', slug: 'amazonwebservices', tag: 'Cloud' },
+  { name: 'AWS', value: 70, color: '#FF9900', slug: null, tag: 'Cloud' },
   { name: 'Linux', value: 78, color: '#FCC624', slug: 'linux', tag: 'OS' },
   { name: 'Docker', value: 75, color: '#2496ED', slug: 'docker', tag: 'Container' },
   { name: 'Postman', value: 80, color: '#FF6C37', slug: 'postman', tag: 'API' },
   { name: 'Netlify / Vercel', value: 82, color: '#00C7B7', slug: 'netlify', tag: 'Deploy' },
-  { name: 'AI Tools', value: 85, color: '#10A37F', slug: 'openai', tag: 'AI' }
+  { name: 'AI Tools', value: 85, color: '#10A37F', slug: null, tag: 'AI' }
 ];
 
 export default function Skills() {
