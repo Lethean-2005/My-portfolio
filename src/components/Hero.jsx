@@ -1,74 +1,8 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { animate, stagger } from 'animejs';
 import { useLanguage } from '../i18n.jsx';
 
-import anim1 from '../assets/animation1.mp4';
-import anim2 from '../assets/animation2.mp4';
-import anim3 from '../assets/animation3.mp4';
-import anim5 from '../assets/animation5.mp4';
-import anim6 from '../assets/animation16.mp4';
-
-const CAROUSEL = [
-  { title: 'JavaScript', src: anim1, type: 'video' },
-  { title: 'TypeScript', src: anim2, type: 'video' },
-  { title: 'Python',     src: anim3, type: 'video' },
-  { title: 'Go',         src: anim5, type: 'video' },
-  { title: 'Rust',       src: anim6, type: 'video' },
-  { title: 'Java',       src: anim1, type: 'video' },
-  { title: 'C#',         src: anim2, type: 'video' },
-  { title: 'PHP',        src: anim3, type: 'video' },
-  { title: 'Ruby',       src: anim5, type: 'video' },
-  { title: 'Swift',      src: anim6, type: 'video' },
-  { title: 'Kotlin',     src: anim1, type: 'video' },
-  { title: 'C++',        src: anim2, type: 'video' }
-];
-
-const CARD_WIDTH = 160;
-const CARD_HEIGHT = 100;
-
-function Carousel3D() {
-  const count = CAROUSEL.length;
-  const radius = useMemo(
-    () => Math.round(CARD_WIDTH / 2 / Math.tan(Math.PI / count)),
-    [count]
-  );
-
-  return (
-    <div className="hero-3d-scene" aria-hidden="true">
-      <div className="hero-3d-ring">
-        {CAROUSEL.map((c, i) => (
-          <div
-            key={c.title}
-            className="hero-3d-slot"
-            style={{
-              width: `${CARD_WIDTH}px`,
-              height: `${CARD_HEIGHT}px`,
-              marginLeft: `${-CARD_WIDTH / 2}px`,
-              marginTop: `${-CARD_HEIGHT / 2}px`,
-              transform: `rotateY(${i * (360 / count)}deg) translateZ(${radius}px)`
-            }}
-          >
-            <div className="hero-3d-card">
-              {c.type === 'video' ? (
-                <video
-                  className="hero-3d-card-media"
-                  src={c.src}
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  preload="auto"
-                />
-              ) : (
-                <img className="hero-3d-card-media" src={c.src} alt="" />
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+import myImage from '../assets/profile.jfif';
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -130,8 +64,8 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-nolana-right">
-          <Carousel3D />
+        <div className="hero-nolana-right hero-anim">
+          <img src={myImage} alt="Lethean portrait" className="hero-portrait" />
         </div>
       </div>
     </section>

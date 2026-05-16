@@ -569,8 +569,13 @@ svg {
 .hero-nolana-right img {
   width: 100%;
   height: auto;
-  max-width: 560px;
-  filter: drop-shadow(0 0 60px rgba(255, 94, 58, 0.12));
+  max-width: 320px;
+}
+
+.hero-portrait {
+  display: block;
+  object-fit: contain;
+  background: transparent;
 }
 
 /* ============ PRICING (BooStock-style notch cards) ============ */
@@ -952,6 +957,7 @@ html[lang='km'] .pricing-title {
   height: 380px;
   perspective: 2200px;
   perspective-origin: 50% 30%;
+  overflow: hidden;
 }
 
 .hero-3d-ring {
@@ -3591,7 +3597,7 @@ html[lang='km'] .footer-brand-name {
     order: -1;
   }
   .hero-nolana-right img {
-    max-width: 380px;
+    max-width: 240px;
   }
   .approach-row {
     grid-template-columns: 1fr;
@@ -3626,7 +3632,7 @@ html[lang='km'] .footer-brand-name {
     font-size: clamp(28px, 8vw, 38px);
   }
   .hero-nolana-right img {
-    max-width: 280px;
+    max-width: 180px;
   }
   .section-title {
     font-size: clamp(22px, 6vw, 28px);
