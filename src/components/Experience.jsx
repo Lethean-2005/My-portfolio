@@ -25,6 +25,123 @@ function FileIcon() {
   );
 }
 
+const PC_ICON = {
+  calendar: (
+    <svg viewBox="0 0 24 24" className="exp-pc-mini-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="4" y="5" width="16" height="16" rx="2" />
+      <path d="M16 3v4" />
+      <path d="M8 3v4" />
+      <path d="M4 11h16" />
+      <path d="M8 15h2v2H8z" />
+    </svg>
+  ),
+  dots: (
+    <svg viewBox="0 0 24 24" className="exp-pc-mini-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="6" r="1" />
+      <circle cx="12" cy="12" r="1" />
+      <circle cx="12" cy="18" r="1" />
+    </svg>
+  ),
+  folder: (
+    <svg viewBox="0 0 24 24" className="exp-pc-icon exp-pc-icon-folder" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2" />
+    </svg>
+  ),
+  user: (
+    <svg viewBox="0 0 24 24" className="exp-pc-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" />
+      <circle cx="12" cy="10" r="3" />
+      <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+    </svg>
+  ),
+  flag: (
+    <svg viewBox="0 0 24 24" className="exp-pc-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M5 5a5 5 0 0 1 7 0a5 5 0 0 0 7 0v9a5 5 0 0 1 -7 0a5 5 0 0 0 -7 0v-9z" />
+      <path d="M5 21v-7" />
+    </svg>
+  ),
+  bar: (
+    <svg viewBox="0 0 24 24" className="exp-pc-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="14" width="4" height="6" rx="1" />
+      <rect x="10" y="10" width="4" height="10" rx="1" />
+      <rect x="17" y="6" width="4" height="14" rx="1" />
+    </svg>
+  ),
+  listCheck: (
+    <svg viewBox="0 0 24 24" className="exp-pc-icon" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M3.5 5.5l1.5 1.5l2.5 -2.5" />
+      <path d="M3.5 11.5l1.5 1.5l2.5 -2.5" />
+      <path d="M3.5 17.5l1.5 1.5l2.5 -2.5" />
+      <path d="M11 6l9 0" />
+      <path d="M11 12l9 0" />
+      <path d="M11 18l9 0" />
+    </svg>
+  )
+};
+
+const PROJECT_CARDS = [
+  {
+    status: 'completed', statusLabel: 'Completed',
+    title: 'Web Development Workshop',
+    desc: 'Intensive bootcamp on full-stack web fundamentals.',
+    org: 'Training Workshop', scope: '8-week intensive',
+    date: 'Jul 5, 2024', priority: 'High',
+    pie: 'green-100', percent: '100%', tasks: '24 / 24 Tasks'
+  },
+  {
+    status: 'active', statusLabel: 'Active',
+    title: 'Internship — Ajip Consulting',
+    desc: 'Production internship: client features and full-stack delivery.',
+    org: 'Software Developer', scope: '6 months',
+    date: 'Sep 1, 2025', priority: 'High',
+    pie: 'orange-72', percent: '72%', tasks: '18 / 25 Tasks'
+  },
+  {
+    status: 'active', statusLabel: 'Active',
+    title: 'CMED Construction Projects',
+    desc: 'On-site coordination, schedule and scope across CMED builds.',
+    org: 'Full-Stack Web Developer QA', scope: 'Multi-project',
+    date: '18 Feb 2026', priority: 'Medium',
+    pie: 'green-54', percent: '54%', tasks: '13 / 24 Tasks'
+  }
+];
+
+function ProjectCard({ data }) {
+  const p = data;
+  return (
+    <article className="exp-pc-card">
+      <div className="exp-pc-head">
+        {PC_ICON.folder}
+        <span className={`exp-pc-badge exp-pc-badge-${p.status}`}>{p.statusLabel}</span>
+      </div>
+      <h3 className="exp-pc-title">{p.title}</h3>
+      <p className="exp-pc-desc">{p.desc}</p>
+      <div className="exp-pc-meta">
+        {PC_ICON.user}
+        <span>{p.org}</span>
+        <span className="exp-pc-dot" />
+        <span>{p.scope}</span>
+      </div>
+      <div className="exp-pc-date">
+        <span className="exp-pc-date-left">{PC_ICON.flag} {p.date}</span>
+        <span className="exp-pc-date-right">{PC_ICON.bar} {p.priority}</span>
+      </div>
+      <div className="exp-pc-divider" />
+      <div className="exp-pc-foot">
+        <span className="exp-pc-progress"><span className={`exp-pc-pie exp-pc-pie-${p.pie}`} />{p.percent}</span>
+        <span className="exp-pc-tasks">{PC_ICON.listCheck}{p.tasks}</span>
+        <div className="exp-pc-avatar" aria-hidden="true">
+          <svg viewBox="0 0 30 30">
+            <rect width="30" height="30" fill="#475569" />
+            <circle cx="15" cy="12" r="4.5" fill="#e2e8f0" />
+            <path d="M5 30 C5 22, 25 22, 25 30 Z" fill="#e2e8f0" />
+          </svg>
+        </div>
+      </div>
+    </article>
+  );
+}
+
 const TRUST_LOGOS = [
   { slug: 'hubspot', label: 'HubSpot' },
   { slug: 'zendesk', label: 'Zendesk' },
@@ -51,142 +168,30 @@ const STAGE = {
 };
 
 function CardContent({ idx }) {
-  if (idx === 0) {
-    return (
-      <>
-        <div className="exp-stack-compact">
-          <div className="exp-stack-row">
-            <div className="exp-crm-avatars">
-              <div className="exp-stack-av exp-stack-av1" />
-              <div className="exp-stack-av exp-stack-av2" />
-              <div className="exp-stack-av exp-stack-av3" />
-            </div>
-            <div>
-              <div className="exp-stack-headline">Mentors and teammates I worked with</div>
-              <div className="exp-stack-delta-line">+250</div>
-            </div>
-          </div>
-        </div>
-        <div className="exp-stack-expanded">
-          <div className="exp-stack-between" style={{ marginBottom: 14 }}>
-            <div className="exp-stack-row">
-              <div className="exp-crm-avatars">
-                <div className="exp-stack-av exp-stack-av1" />
-                <div className="exp-stack-av exp-stack-av2" />
-                <div className="exp-stack-av exp-stack-av3" />
-                <div className="exp-stack-av exp-stack-av4">+9</div>
-              </div>
-              <div className="exp-stack-headline">Mentors and teammates I worked with</div>
-            </div>
-          </div>
-          <div className="exp-stack-row" style={{ alignItems: 'flex-end', gap: 10, marginTop: 8 }}>
-            <span className="exp-stack-num exp-stack-num-xl">250</span>
-            <span className="exp-stack-delta">
-              <ArrowUpRight /> 32%
-            </span>
-          </div>
-          <div className="exp-stack-muted" style={{ marginTop: 10 }}>
-            Network growth across workshops, internships and CMED projects
-          </div>
-          <svg className="exp-stack-chart" viewBox="0 0 300 56" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="expG1" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#22c55e" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#22c55e" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d="M0,42 L40,38 L80,30 L120,32 L160,24 L200,20 L240,14 L300,6 L300,56 L0,56 Z" fill="url(#expG1)" />
-            <path d="M0,42 L40,38 L80,30 L120,32 L160,24 L200,20 L240,14 L300,6" fill="none" stroke="#16a34a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <div className="exp-stack-months" style={{ marginTop: 8 }}>
-            <span>Apr</span><span>May</span><span>Jun</span><span className="now">Jul</span>
-          </div>
-        </div>
-      </>
-    );
-  }
-  if (idx === 1) {
-    return (
-      <>
-        <div className="exp-stack-compact">
-          <div className="exp-stack-between">
-            <div>
-              <div className="exp-stack-label">Workshop Hours</div>
-              <div className="exp-stack-row" style={{ gap: 10, marginTop: 4 }}>
-                <span className="exp-stack-num exp-stack-num-lg">4,820</span>
-                <span className="exp-stack-delta">
-                  <ArrowUpRight /> 420
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="exp-stack-expanded">
-          <div className="exp-stack-tabs">
-            <div className="exp-stack-tab active">Overview</div>
-            <div className="exp-stack-tab">Workshop</div>
-            <div className="exp-stack-tab">Order</div>
-          </div>
-          <div className="exp-stack-row" style={{ alignItems: 'flex-end', gap: 12, marginTop: 22 }}>
-            <span className="exp-stack-num exp-stack-num-xl">4,820</span>
-            <span className="exp-stack-delta">
-              <ArrowUpRight /> 420
-            </span>
-          </div>
-          <div className="exp-stack-muted" style={{ marginTop: 10 }}>
-            Workshop hours delivered this year by around 58%
-          </div>
-          <svg className="exp-stack-chart" viewBox="0 0 300 56" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="expG2" x1="0" x2="0" y1="0" y2="1">
-                <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.3" />
-                <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
-              </linearGradient>
-            </defs>
-            <path d="M0,30 L40,34 L80,22 L120,28 L160,18 L200,22 L240,12 L300,16 L300,56 L0,56 Z" fill="url(#expG2)" />
-            <path d="M0,30 L40,34 L80,22 L120,28 L160,18 L200,22 L240,12 L300,16" fill="none" stroke="#0e0e10" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <div className="exp-stack-months" style={{ marginTop: 8 }}>
-            <span>Apr</span><span>May</span><span>Jun</span><span className="now">Jul</span>
-          </div>
-        </div>
-      </>
-    );
-  }
-  // idx === 2
+  const data = PROJECT_CARDS[idx] ?? PROJECT_CARDS[0];
   return (
     <>
-      <div className="exp-stack-compact">
-        <div className="exp-stack-between">
-          <div>
-            <div className="exp-stack-label">Total Projects</div>
-            <div className="exp-stack-num exp-stack-num-lg" style={{ marginTop: 4 }}>120</div>
+      <div className="exp-stack-compact exp-pc-mini">
+        <div className="exp-pc-mini-header">
+          <div className="exp-pc-mini-pills">
+            <span className="exp-pc-mini-pill exp-pc-mini-pill-date">
+              {PC_ICON.calendar}
+              {data.date}
+            </span>
+            <span className={`exp-pc-mini-pill exp-pc-mini-pill-status exp-pc-mini-pill-status-${data.status}`}>
+              <span className="exp-pc-mini-dot" />
+              {data.statusLabel}
+            </span>
           </div>
-          <button type="button" className="exp-stack-export-btn small">
-            Export <FileIcon />
+          <button type="button" className="exp-pc-mini-more" aria-label="More options">
+            {PC_ICON.dots}
           </button>
         </div>
+        <h3 className="exp-pc-mini-title">{data.title}</h3>
+        <p className="exp-pc-mini-subtitle">{data.desc}</p>
       </div>
-      <div className="exp-stack-expanded">
-        <div className="exp-stack-between">
-          <div className="exp-stack-label">Total Projects · All Programs</div>
-          <span className="exp-stack-muted" style={{ fontFamily: "'JetBrains Mono', monospace" }}>2024 — Q3</span>
-        </div>
-        <div className="exp-stack-num exp-stack-num-xl" style={{ marginTop: 10 }}>120</div>
-        <div className="exp-stack-muted" style={{ marginTop: 8 }}>
-          Cumulative projects across workshops, internships and CMED
-        </div>
-        <div className="exp-stack-progress"><span /></div>
-        <div className="exp-stack-between" style={{ marginTop: 8 }}>
-          <span className="exp-stack-muted">Goal · 200 projects</span>
-          <span className="exp-stack-num" style={{ fontSize: 13, color: '#16a34a' }}>60%</span>
-        </div>
-        <div className="exp-stack-between" style={{ marginTop: 18 }}>
-          <span className="exp-stack-muted">Last sync · 2 min ago</span>
-          <button type="button" className="exp-stack-export-btn">
-            Export Data <FileIcon />
-          </button>
-        </div>
+      <div className="exp-stack-expanded exp-stack-expanded-projects">
+        <ProjectCard data={data} />
       </div>
     </>
   );
@@ -295,15 +300,6 @@ export default function Experience() {
             </h2>
 
             <p className="exp-crm-desc">{STAGE.desc}</p>
-
-            <div className="exp-crm-ctas">
-              <button type="button" className="exp-crm-btn-primary">
-                Start 7 Days free trial
-              </button>
-              <button type="button" className="exp-crm-btn-ghost">
-                Learn More <ChevronRight />
-              </button>
-            </div>
 
             <p className="exp-crm-trust">More than 100+ companies trusted us</p>
 
